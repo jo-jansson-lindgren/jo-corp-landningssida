@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="JO Corp levererar AI-driven innehållsproduktion för lokala företag: sociala medier-inlägg och nyhetsbrev, levererade varje vecka.">
+<title>JO Corp</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --ink:#0b1413;
+    --pine:#132621;
+    --pine-2:#182f29;
+    --moss:#24433b;
+    --paper:#f4efe4;
+    --sage:#8fb3a6;
+    --sage-dim:#5f8377;
+    --brass:#d6ad62;
+    --brass-strong:#e8c988;
+    --brass-ink:#241a05;
+    --shadow: rgba(0,0,0,.5);
+    --maxw: 1120px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -10%, rgba(214,173,98,.10), transparent 60%),
+      radial-gradient(ellipse 700px 500px at -10% 20%, rgba(143,179,166,.08), transparent 55%),
+      var(--ink);
+    color:var(--paper);
+    font-family:'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:600;
+    line-height:1.08;
+    text-wrap:balance;
+    margin:0;
+    letter-spacing:-.01em;
+  }
+
+  p{ margin:0; }
+
+  .mono{ font-family:'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--brass);
+    display:flex;
+    align-items:center;
+    gap:.6em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:.5em; height:.5em;
+    border-radius:50%;
+    background:var(--brass);
+    box-shadow:0 0 0 3px rgba(214,173,98,.18);
+    flex:none;
+  }
+
+  a{ color:inherit; }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 1.75rem; }
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(11,20,19,.82);
+    backdrop-filter: blur(10px) saturate(1.1);
+    border-bottom:1px solid rgba(143,179,166,.14);
+  }
+  .nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:1.05rem; padding-bottom:1.05rem;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.15rem;
+    letter-spacing:.01em;
+    display:flex; align-items:baseline; gap:.45rem;
+  }
+  .brand .dot{ color:var(--brass); }
+  .navlinks{ display:flex; gap:2.1rem; list-style:none; margin:0; padding:0; }
+  .navlinks a{
+    text-decoration:none; color:var(--sage);
+    font-size:.92rem; font-weight:500;
+    transition:color .2s ease;
+  }
+  .navlinks a:hover, .navlinks a:focus-visible{ color:var(--paper); }
+  .nav-cta{
+    font-family:'IBM Plex Sans';
+    font-size:.88rem; font-weight:600;
+    color:var(--brass-ink);
+    background:var(--brass);
+    padding:.6rem 1.15rem;
+    border-radius:3px;
+    text-decoration:none;
+    white-space:nowrap;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .nav-cta:hover{ background:var(--brass-strong); transform:translateY(-1px); }
+  .navlinks{ display:none; }
+  @media (min-width:820px){ .navlinks{ display:flex; } }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:5.5rem 0 6rem; }
+  .hero .wrap{
+    display:grid; grid-template-columns:1fr; gap:3.5rem; align-items:center;
+  }
+  @media (min-width:900px){
+    .hero .wrap{ grid-template-columns:1.15fr .85fr; }
+  }
+  .hero h1{
+    margin-top:1rem;
+    font-size:clamp(2rem, 3.6vw + 1rem, 3.05rem);
+  }
+  .hero .sub{
+    margin-top:1.4rem;
+    max-width:46ch;
+    font-size:1.14rem;
+    line-height:1.65;
+    color:var(--sage);
+  }
+  .hero .ctas{ display:flex; flex-wrap:wrap; gap:1rem; margin-top:2.3rem; }
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:.55rem;
+    background:var(--brass); color:var(--brass-ink);
+    font-weight:600; font-size:.98rem;
+    padding:.85rem 1.5rem; border-radius:3px;
+    text-decoration:none;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .btn-primary:hover{ background:var(--brass-strong); transform:translateY(-1px); }
+  .btn-ghost{
+    display:inline-flex; align-items:center; gap:.5rem;
+    color:var(--paper); text-decoration:none;
+    font-weight:500; font-size:.98rem;
+    padding:.85rem 1rem;
+    border:1px solid var(--moss); border-radius:3px;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .btn-ghost:hover{ border-color:var(--sage-dim); background:rgba(143,179,166,.06); }
+
+  /* weekly delivery widget */
+  .calendar{
+    background:linear-gradient(180deg, var(--pine-2), var(--pine));
+    border:1px solid var(--moss);
+    border-radius:10px;
+    padding:1.5rem 1.4rem 1.7rem;
+    box-shadow:0 30px 60px -25px var(--shadow);
+  }
+  .calendar-head{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:1.15rem;
+  }
+  .calendar-head .label{ font-size:.78rem; color:var(--sage); letter-spacing:.08em; text-transform:uppercase; }
+  .calendar-head .week{ font-size:.92rem; color:var(--paper); font-weight:500; }
+  .cal-grid{
+    display:grid; grid-template-columns:repeat(7,1fr); gap:.4rem;
+  }
+  .cal-day{
+    aspect-ratio:1/1.15;
+    border-radius:6px;
+    background:rgba(244,239,228,.04);
+    border:1px solid rgba(143,179,166,.12);
+    display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+    padding:.4rem .2rem .5rem;
+    font-size:.68rem; color:var(--sage-dim);
+  }
+  .cal-day .chip{
+    width:1.15rem; height:1.15rem;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--brass);
+    color:var(--brass-ink);
+  }
+  .cal-day .chip svg{ width:.68rem; height:.68rem; }
+  .cal-day.empty .chip{ visibility:hidden; }
+  .cal-day.sage .chip{ background:var(--sage); }
+  .cal-foot{
+    margin-top:1.3rem; display:flex; align-items:center; gap:.6rem;
+    font-size:.82rem; color:var(--sage);
+  }
+  .cal-foot .pulse{
+    width:.5rem; height:.5rem; border-radius:50%; background:var(--brass);
+    box-shadow:0 0 0 0 rgba(214,173,98,.5);
+    animation:pulse 2.4s ease-out infinite;
+  }
+  @media (prefers-reduced-motion:reduce){ .cal-foot .pulse{ animation:none; } }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(214,173,98,.45); }
+    70%{ box-shadow:0 0 0 9px rgba(214,173,98,0); }
+    100%{ box-shadow:0 0 0 0 rgba(214,173,98,0); }
+  }
+
+  /* ---------- sections generic ---------- */
+  section{ padding:5.5rem 0; }
+  .section-head{ max-width:56ch; margin-bottom:3rem; }
+  .section-head h2{ font-size:clamp(1.7rem, 2.4vw + 1rem, 2.35rem); margin-top:.8rem; }
+  .section-head .sub{ margin-top:1rem; color:var(--sage); font-size:1.05rem; line-height:1.6; }
+  .hr{
+    height:1px; border:0; margin:0;
+    background:linear-gradient(90deg, rgba(143,179,166,.28), rgba(143,179,166,0) 70%);
+  }
+
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; } }
+
+  /* ---------- services ---------- */
+  .services-grid{
+    display:grid; grid-template-columns:1fr; gap:1.25rem;
+  }
+  @media (min-width:760px){ .services-grid{ grid-template-columns:repeat(3,1fr); } }
+  .service{
+    background:var(--pine);
+    border:1px solid var(--moss);
+    border-radius:8px;
+    padding:1.9rem 1.7rem 2.1rem;
+    transition:border-color .25s ease, transform .25s ease, background .25s ease;
+  }
+  .service:hover{ border-color:var(--brass); transform:translateY(-4px); background:var(--pine-2); }
+  .service .icon{
+    width:2.6rem; height:2.6rem;
+    border-radius:7px;
+    background:rgba(214,173,98,.12);
+    color:var(--brass);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:1.3rem;
+  }
+  .service .icon svg{ width:1.3rem; height:1.3rem; }
+  .service h3{ font-size:1.18rem; font-weight:600; margin-bottom:.6rem; }
+  .service p{ color:var(--sage); font-size:.98rem; line-height:1.6; }
+
+  /* ---------- work ---------- */
+  .work-grid{
+    display:grid; grid-template-columns:1fr; gap:1.4rem;
+  }
+  @media (min-width:640px){ .work-grid{ grid-template-columns:1fr 1fr; } }
+  @media (min-width:1000px){ .work-grid{ grid-template-columns:repeat(3,1fr); } }
+  .case{
+    background:var(--pine);
+    border:1px solid var(--moss);
+    border-radius:8px;
+    overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .case-media{
+    aspect-ratio:4/3;
+    background:
+      repeating-linear-gradient(135deg, rgba(143,179,166,.07) 0 2px, transparent 2px 14px),
+      linear-gradient(160deg, var(--pine-2), var(--ink));
+    border-bottom:1px dashed var(--moss);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--sage-dim);
+    font-size:.72rem;
+    text-align:center;
+    padding:1rem;
+    gap:.4rem;
+  }
+  .case-media .up{ width:1.4rem; height:1.4rem; margin:0 auto .5rem; display:block; color:var(--sage-dim); }
+  .case-body{ padding:1.1rem 1.2rem 1.35rem; }
+  .case-tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.68rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--brass);
+    margin-bottom:.55rem;
+  }
+  .case h3{ font-family:'IBM Plex Sans'; font-size:1.02rem; font-weight:600; margin-bottom:.4rem; }
+  .case p{ font-size:.88rem; color:var(--sage); line-height:1.55; }
+
+  .work-note{
+    margin-top:1.8rem; font-size:.86rem; color:var(--sage-dim);
+    display:flex; gap:.5rem; align-items:flex-start;
+  }
+  .work-note svg{ flex:none; width:1rem; height:1rem; margin-top:.15rem; color:var(--brass); }
+
+  /* ---------- pricing ---------- */
+  .price-card{
+    background:linear-gradient(160deg, var(--pine-2), var(--pine));
+    border:1px solid var(--moss);
+    border-radius:10px;
+    padding:2.6rem 2.4rem;
+    display:flex; flex-wrap:wrap; gap:2rem 3rem;
+    align-items:center; justify-content:space-between;
+  }
+  .price-figure .from{ color:var(--sage); font-size:.95rem; margin-bottom:.3rem; }
+  .price-figure .amount{
+    font-family:'Fraunces', serif; font-weight:600;
+    font-size:clamp(2.3rem, 3.4vw + 1rem, 3.2rem);
+    color:var(--paper);
+  }
+  .price-figure .amount span{ font-size:.45em; color:var(--sage); font-family:'IBM Plex Sans'; font-weight:500; }
+  .price-perks{ display:flex; flex-direction:column; gap:.65rem; }
+  .price-perks .perk{ display:flex; align-items:center; gap:.6rem; font-size:.94rem; color:var(--paper); }
+  .price-perks svg{ width:1.05rem; height:1.05rem; color:var(--brass); flex:none; }
+  .price-note{ font-size:.85rem; color:var(--sage-dim); margin-top:1.6rem; }
+
+  /* ---------- contact ---------- */
+  .contact-card{
+    background:radial-gradient(ellipse 700px 300px at 20% -30%, rgba(214,173,98,.16), transparent 60%), var(--pine);
+    border:1px solid var(--moss);
+    border-radius:10px;
+    padding:3.2rem 2.6rem;
+    text-align:left;
+  }
+  .contact-card h2{ font-size:clamp(1.7rem,2.6vw+1rem,2.4rem); max-width:20ch; }
+  .contact-card .sub{ margin-top:1rem; max-width:52ch; color:var(--sage); font-size:1.05rem; line-height:1.6; }
+  .contact-actions{ margin-top:2rem; display:flex; flex-wrap:wrap; gap:1rem; align-items:center; }
+  .contact-mail{ font-size:.9rem; color:var(--sage-dim); }
+  .contact-mail code{
+    font-family:'IBM Plex Mono', monospace; color:var(--brass);
+    background:rgba(214,173,98,.08); padding:.15rem .4rem; border-radius:4px;
+  }
+
+  footer{
+    border-top:1px solid rgba(143,179,166,.14);
+    padding:2.4rem 0 3rem;
+  }
+  footer .wrap{
+    display:flex; flex-wrap:wrap; gap:1rem;
+    justify-content:space-between; align-items:center;
+    font-size:.82rem; color:var(--sage-dim);
+  }
+  footer .brand{ font-size:.98rem; color:var(--sage); }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <div class="brand">JO Corp<span class="dot">.</span></div>
+    <ul class="navlinks">
+      <li><a href="#tjanster">Tjänster</a></li>
+      <li><a href="#exempel">Exempel</a></li>
+      <li><a href="#pris">Pris</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a class="nav-cta" href="#kontakt">Boka samtal</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">JO Corp · Innehållsproduktion</p>
+        <h1>Effektiv innehållsproduktion för företag som vill synas lokalt</h1>
+        <p class="sub">Snygga sociala medier-inlägg och nyhetsbrev, levererade varje vecka – utan att du behöver lyfta ett finger.</p>
+        <div class="ctas">
+          <a class="btn-primary" href="#kontakt">
+            Boka ett samtal
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn-ghost" href="#tjanster">Se tjänsterna</a>
+        </div>
+      </div>
+
+      <div class="calendar" aria-hidden="true">
+        <div class="calendar-head">
+          <span class="label mono">Leveransvecka</span>
+          <span class="week mono">V. 36</span>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-day"><span>Mån</span><span class="chip"></span></div>
+          <div class="cal-day"><span>Tis</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="3" y="5" width="18" height="15" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></span></div>
+          <div class="cal-day"><span>Ons</span><span class="chip"></span></div>
+          <div class="cal-day sage"><span>Tor</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 7l9 6 9-6M4 5h16v14H4z"/></svg></span></div>
+          <div class="cal-day"><span>Fre</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="3" y="5" width="18" height="15" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></span></div>
+          <div class="cal-day empty"><span>Lör</span><span class="chip"></span></div>
+          <div class="cal-day empty"><span>Sön</span><span class="chip"></span></div>
+        </div>
+        <div class="cal-foot"><span class="pulse"></span> Schemaläggs och publiceras automatiskt</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <section id="tjanster">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Tjänster</p>
+        <h2>Tre saker vi sköter åt dig</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service reveal">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="3.4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+          </div>
+          <h3>Instagram &amp; Facebook</h3>
+          <p>Färdiga inlägg med bilder och text, anpassade efter ditt varumärke och din målgrupp. Du godkänner, vi publicerar.</p>
+        </div>
+        <div class="service reveal">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          </div>
+          <h3>Nyhetsbrev</h3>
+          <p>Månatliga nyhetsbrev som håller dina kunder uppdaterade – nyheter, erbjudanden och det som händer i din verksamhet.</p>
+        </div>
+        <div class="service reveal">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+          </div>
+          <h3>Schemaläggning</h3>
+          <p>Vi planerar och schemalägger allt innehåll så att det går ut vid rätt tidpunkt, varje gång – helt automatiskt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <section id="exempel">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Exempel</p>
+        <h2>Ett urval av innehåll vi tagit fram</h2>
+        <p class="sub">Från Instagram-inlägg till nyhetsbrev – här är typen av innehåll vi skapar för lokala verksamheter.</p>
+      </div>
+
+      <div class="work-grid">
+        <div class="case reveal">
+          <div class="case-media">
+            <div>
+              <svg class="up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+              Lägg till bild
+            </div>
+          </div>
+          <div class="case-body">
+            <span class="case-tag">Instagram</span>
+            <h3>Café Solros</h3>
+            <p>Veckovisa inlägg med bilder på dagens fika och aktuella erbjudanden.</p>
+          </div>
+        </div>
+
+        <div class="case reveal">
+          <div class="case-media">
+            <div>
+              <svg class="up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+              Lägg till bild
+            </div>
+          </div>
+          <div class="case-body">
+            <span class="case-tag">Facebook</span>
+            <h3>Hansson VVS</h3>
+            <p>Inlägg som visar avslutade jobb och bygger förtroende hos nya kunder.</p>
+          </div>
+        </div>
+
+        <div class="case reveal">
+          <div class="case-media">
+            <div>
+              <svg class="up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+              Lägg till bild
+            </div>
+          </div>
+          <div class="case-body">
+            <span class="case-tag">Nyhetsbrev</span>
+            <h3>Boutique Lykke</h3>
+            <p>Månatligt nyhetsbrev med nyheter i sortimentet och säsongens erbjudanden.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="work-note reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+        Byt ut rutorna ovan mot riktiga skärmdumpar/exporter från exempelportföljen och Canva-grafiken innan publicering.
+      </p>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <section id="pris">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Pris</p>
+        <h2>Enkelt och förutsägbart</h2>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-figure">
+          <div class="from mono">Från</div>
+          <div class="amount">900 kr<span> /mån</span></div>
+        </div>
+        <div class="price-perks">
+          <div class="perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Gratis testmånad för nya kunder
+          </div>
+          <div class="perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Ingen bindningstid
+          </div>
+          <div class="perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Du godkänner allt innan publicering
+          </div>
+        </div>
+      </div>
+      <p class="price-note reveal">Pris och innehåll i testmånaden bekräftas vid det första samtalet.</p>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <section id="kontakt">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <h2>Vill du ha snyggare innehåll – utan att lägga tid på det själv?</h2>
+        <p class="sub">Hör av dig så tar vi ett första, förutsättningslöst samtal.</p>
+        <div class="contact-actions">
+          <a class="btn-primary" href="mailto:jack.walter.jansson@gmail.com">
+            Skicka ett mejl
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <span class="contact-mail">eller skriv direkt till <code>jack.walter.jansson@gmail.com</code></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">JO Corp.</span>
+    <span>AI-driven innehållsproduktion för lokala företag · <span id="year"></span></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  }
+</script>
+</body>
+</html>
