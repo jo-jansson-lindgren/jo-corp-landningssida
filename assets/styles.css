@@ -137,6 +137,7 @@ section[id]{ scroll-margin-top:5.5rem; }
 .navlinks-cta .btn-primary{ width:100%; justify-content:center; }
 
 .nav-cta{
+  display:none;
   font-family:'Inter';
   font-size:.88rem; font-weight:600;
   color:#fff;
@@ -149,9 +150,8 @@ section[id]{ scroll-margin-top:5.5rem; }
 }
 .nav-cta:hover{ background:var(--accent); transform:translateY(-1px); }
 
-@media (max-width:479px){ .nav-cta{ display:none; } }
-
 @media (min-width:820px){
+  .nav-cta{ display:inline-flex; align-items:center; }
   .nav-toggle{ display:none; }
   .navlinks-cta{ display:none; }
   .navlinks{
