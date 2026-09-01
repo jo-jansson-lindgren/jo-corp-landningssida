@@ -49,49 +49,4 @@
     }
   }
 
-  // ---------- animated stat counters + bars in the hero impact card ----------
-  function animateCount(el) {
-    var target = parseFloat(el.getAttribute('data-target'));
-    var decimals = parseInt(el.getAttribute('data-decimal') || '0', 10);
-    var suffix = el.getAttribute('data-suffix') || '';
-    if (reduceMotion) {
-      el.textContent = target.toFixed(decimals) + suffix;
-      return;
-    }
-    var start = null;
-    var duration = 1200;
-    function step(ts) {
-      if (!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var value = target * eased;
-      el.textContent = value.toFixed(decimals) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  var impactEl = document.querySelector('.impact');
-  if (impactEl) {
-    var counted = false;
-    function triggerImpact() {
-      if (counted) return;
-      counted = true;
-      impactEl.querySelectorAll('.js-count').forEach(animateCount);
-      impactEl.querySelectorAll('.stat-bar i').forEach(function (bar) {
-        var target = bar.getAttribute('data-target');
-        requestAnimationFrame(function () { bar.style.width = target + '%'; });
-      });
-    }
-    if (reduceMotion || !('IntersectionObserver' in window)) {
-      triggerImpact();
-    } else {
-      var impactIo = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) { triggerImpact(); impactIo.disconnect(); }
-        });
-      }, { threshold: 0.4 });
-      impactIo.observe(impactEl);
-    }
-  }
 })();
