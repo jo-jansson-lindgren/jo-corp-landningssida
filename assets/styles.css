@@ -350,6 +350,23 @@ section{ padding:5rem 0; }
 .detail-body p{ color:var(--ink-soft); font-size:1rem; line-height:1.65; margin-bottom:1rem; }
 .detail-body p:last-of-type{ margin-bottom:1.3rem; }
 
+/* ---------- platform gallery (exempel.html: fler inläggstyper per case) ---------- */
+.platform-gallery{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:1rem;
+}
+@media (min-width:520px){ .platform-gallery{ grid-template-columns:repeat(3,1fr); } }
+.platform-gallery figure{ margin:0; }
+.platform-gallery-media{
+  aspect-ratio:1/1; overflow:hidden; border-radius:10px;
+  border:1px solid var(--line); background:var(--accent-soft);
+}
+.platform-gallery-media img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform .5s cubic-bezier(.16,1,.3,1);
+}
+.platform-gallery figure:hover .platform-gallery-media img{ transform:scale(1.06); }
+.platform-gallery figcaption{ margin-top:.55rem; }
+
 /* ---------- pricing ---------- */
 .price-card{
   background:var(--panel);
