@@ -511,3 +511,73 @@ footer{
   margin-top:2.6rem; padding-top:1.6rem; border-top:1px solid var(--line);
   font-size:.8rem; color:var(--ink-faint);
 }
+
+
+/* ---------- case pages (exempelcase) ---------- */
+.case-meta{
+  margin-top:.9rem;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:.72rem; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.note-inline{
+  margin-top:1.2rem; padding:.85rem 1rem;
+  border:1px dashed var(--line); border-radius:10px;
+  background:var(--panel);
+  color:var(--ink-faint); font-size:.9rem; line-height:1.6;
+}
+.post-grid{ display:grid; grid-template-columns:1fr; gap:1.1rem; margin-top:1.6rem; }
+@media (min-width:760px){ .post-grid{ grid-template-columns:1fr 1fr; } }
+.post{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:1.15rem 1.25rem 1.2rem;
+  display:flex; flex-direction:column;
+  transition:border-color .3s ease, box-shadow .3s ease;
+}
+.post:hover{ border-color:var(--ink); box-shadow:0 20px 38px -30px var(--shadow-strong); }
+.post h4{ font-family:'Space Grotesk'; font-size:1rem; font-weight:600; margin-bottom:.55rem; }
+.post p{ color:var(--ink-soft); font-size:.95rem; line-height:1.65; flex:1; }
+.post-wide{ margin-top:1.6rem; }
+.post-format{
+  display:block; width:100%;
+  margin-top:1rem; padding-top:.75rem;
+  border-top:1px solid var(--line);
+  font-family:'IBM Plex Mono', monospace;
+  font-size:.66rem; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--accent);
+}
+.longform{
+  margin-top:1.1rem;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:1.1rem 1.25rem;
+}
+.longform summary{
+  cursor:pointer; list-style:none;
+  font-family:'Space Grotesk'; font-weight:600; font-size:.98rem;
+  display:flex; justify-content:space-between; align-items:center; gap:1rem;
+}
+.longform summary::-webkit-details-marker{ display:none; }
+.longform summary::after{ content:"+"; color:var(--accent); font-size:1.3rem; line-height:1; }
+.longform[open] summary::after{ content:"–"; }
+.longform-body p{ margin-top:.95rem; color:var(--ink-soft); font-size:.96rem; line-height:1.7; }
+.case-link{
+  display:inline-flex; align-items:center; gap:.35rem;
+  margin-top:.85rem;
+  font-size:.88rem; font-weight:600; color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--line); padding-bottom:2px;
+  transition:color .25s ease, border-color .25s ease;
+}
+.case-link:hover{ color:var(--accent); border-color:var(--accent); }
+.case-media.is-text{
+  display:flex; align-items:center; justify-content:center;
+  padding:1.5rem; text-align:center;
+}
+.case-media.is-text span{
+  font-family:'Space Grotesk'; font-size:1.1rem; font-weight:600;
+  color:var(--accent); line-height:1.45;
+}
