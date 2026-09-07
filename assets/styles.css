@@ -573,11 +573,3 @@ footer{
   transition:color .25s ease, border-color .25s ease;
 }
 .case-link:hover{ color:var(--accent); border-color:var(--accent); }
-.case-media.is-text{
-  display:flex; align-items:center; justify-content:center;
-  padding:1.5rem; text-align:center;
-}
-.case-media.is-text span{
-  font-family:'Space Grotesk'; font-size:1.1rem; font-weight:600;
-  color:var(--accent); line-height:1.45;
-}
