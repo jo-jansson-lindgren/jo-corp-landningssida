@@ -49,4 +49,34 @@
     }
   }
 
+  // ---------- cookie notice ----------
+  // Cloudflare Web Analytics is cookie-free (no personal data stored), and Google
+  // Fonts is loaded on every page load. We still show a short, honest notice with
+  // a link to the full cookie policy, and remember the choice so it only shows once.
+  try {
+    var CONSENT_KEY = 'jo-cookie-consent';
+    var already = window.localStorage.getItem(CONSENT_KEY);
+    if (!already) {
+      var bar = document.createElement('div');
+      bar.className = 'cookie-bar';
+      bar.setAttribute('role', 'region');
+      bar.setAttribute('aria-label', 'Om kakor på den här webbplatsen');
+      bar.innerHTML =
+        '<p>Vi använder inga spårande kakor. Sidan laddar typsnitt från Google Fonts och en kakfri besöksstatistik (Cloudflare Web Analytics). ' +
+        '<a href="cookies.html">Läs mer i vår cookiepolicy</a>.</p>' +
+        '<div class="cookie-bar-actions">' +
+        '<button type="button" class="btn-primary" data-cookie-accept>Jag förstår</button>' +
+        '</div>';
+      document.body.appendChild(bar);
+      window.setTimeout(function () { bar.classList.add('show'); }, 500);
+      bar.querySelector('[data-cookie-accept]').addEventListener('click', function () {
+        try { window.localStorage.setItem(CONSENT_KEY, 'acknowledged'); } catch (e) {}
+        bar.classList.remove('show');
+        window.setTimeout(function () { bar.remove(); }, 500);
+      });
+    }
+  } catch (e) {
+    // localStorage unavailable (private browsing etc.) — fail silently, no banner.
+  }
+
 })();
