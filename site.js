@@ -50,7 +50,7 @@
   }
 
   // ---------- cookie notice ----------
-  // Cloudflare Web Analytics is cookie-free (no personal data stored), and Google
+  // Cloudflare Web Analytics and Metricool are cookie-free (no personal data stored), and Google
   // Fonts is loaded on every page load. We still show a short, honest notice with
   // a link to the full cookie policy, and remember the choice so it only shows once.
   try {
@@ -62,7 +62,7 @@
       bar.setAttribute('role', 'region');
       bar.setAttribute('aria-label', 'Om kakor på den här webbplatsen');
       bar.innerHTML =
-        '<p>Vi använder inga spårande kakor. Sidan laddar typsnitt från Google Fonts och en kakfri besöksstatistik (Cloudflare Web Analytics). ' +
+        '<p>Vi använder inga spårande kakor. Sidan laddar typsnitt från Google Fonts och kakfri besöksstatistik (Cloudflare Web Analytics och Metricool). ' +
         '<a href="cookies.html">Läs mer i vår cookiepolicy</a>.</p>' +
         '<div class="cookie-bar-actions">' +
         '<button type="button" class="btn-primary" data-cookie-accept>Jag förstår</button>' +
