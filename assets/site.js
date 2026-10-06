@@ -49,8 +49,41 @@
     }
   }
 
+  // ---------- timeline fills as you scroll ----------
+  var tl = document.querySelector('[data-timeline]');
+  if (tl && !reduceMotion) {
+    var ticking = false;
+    var updateTl = function () {
+      var r = tl.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var p = (vh * 0.75 - r.top) / (r.height + vh * 0.1);
+      tl.style.setProperty('--tl', Math.max(0, Math.min(1, p)).toFixed(3));
+      ticking = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(updateTl); }
+    }, { passive: true });
+    window.addEventListener('resize', updateTl);
+    updateTl();
+  } else if (tl) {
+    tl.style.setProperty('--tl', '1');
+  }
+
+  // ---------- hero shapes follow the pointer (desktop only) ----------
+  var heroEl = document.querySelector('.hero');
+  var orbs = document.querySelector('.hero-orbs');
+  if (heroEl && orbs && !reduceMotion && window.matchMedia('(hover:hover)').matches) {
+    orbs.style.transition = 'transform .4s ease-out';
+    heroEl.addEventListener('mousemove', function (e) {
+      var r = heroEl.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      orbs.style.transform = 'translate3d(' + (x * -28).toFixed(1) + 'px,' + (y * -28).toFixed(1) + 'px,0)';
+    });
+  }
+
   // ---------- cookie notice ----------
-  // Cloudflare Web Analytics is cookie-free (no personal data stored), and Google
+  // Cloudflare Web Analytics and Metricool are cookie-free (no personal data stored), and Google
   // Fonts is loaded on every page load. We still show a short, honest notice with
   // a link to the full cookie policy, and remember the choice so it only shows once.
   try {
@@ -62,7 +95,7 @@
       bar.setAttribute('role', 'region');
       bar.setAttribute('aria-label', 'Om kakor på den här webbplatsen');
       bar.innerHTML =
-        '<p>Vi använder inga spårande kakor. Sidan laddar typsnitt från Google Fonts och en kakfri besöksstatistik (Cloudflare Web Analytics). ' +
+        '<p>Vi använder inga spårande kakor. Sidan laddar typsnitt från Google Fonts och kakfri besöksstatistik (Cloudflare Web Analytics och Metricool). ' +
         '<a href="cookies.html">Läs mer i vår cookiepolicy</a>.</p>' +
         '<div class="cookie-bar-actions">' +
         '<button type="button" class="btn-primary" data-cookie-accept>Jag förstår</button>' +
