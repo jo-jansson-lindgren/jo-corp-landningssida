@@ -3,7 +3,7 @@
 // Kräver AI-koppling (binding) med namnet "AI" i Pages-projektets inställningar.
 // Valfritt: miljövariabeln CHAT_MODEL byter modell utan kodändring.
 
-const DEFAULT_MODEL = "@cf/meta/llama-3.1-8b-instruct";
+const DEFAULT_MODEL = "@cf/meta/llama-3.1-8b-instruct-fp8";
 
 const MAX_MESSAGES = 8; // senaste meddelandena som skickas med
 const MAX_CHARS = 500; // per meddelande
