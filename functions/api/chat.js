@@ -128,7 +128,9 @@ export async function onRequestPost({ request, env }) {
     return json({ reply });
   } catch (err) {
     // Typiskt: daglig gräns slut eller modellen borttagen.
-    return json({ error: "ai_unavailable" }, 503);
+    // Cloudflares felmeddelande följer med (innehåller inga hemligheter) för felsökning.
+    const detail = String((err && err.message) || err).slice(0, 200);
+    return json({ error: "ai_unavailable", detail }, 503);
   }
 }
 
