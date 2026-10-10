@@ -36,6 +36,10 @@ PAKET OCH PRISER (löpande månadsabonnemang, ingen bindningstid)
 Ingår alltid: ingen bindningstid, kunden godkänner allt innan publicering, gratis testmånad för nya kunder, all grafik och alla mallar får kunden behålla.
 Exakt omfattning stäms av vid det första samtalet.
 
+SKILLNADER MELLAN PAKETEN
+- Mini till Standard: fler inlägg (4 till 8–10), anpassad tonalitet, egen visuell linje med mallar, uppdaterad Google Business Profile, ett nyhetsbrev per månad och månadsrapport med räckvidd och engagemang.
+- Standard till Plus: ännu fler inlägg (8–10 till 12–16), ett kampanjupplägg per kvartal, två nyhetsbrev i stället för ett, fördjupad månadsrapport med rekommendationer och avstämning varannan vecka i stället för varje månad.
+
 VANLIGA FRÅGOR
 - Testmånaden: en första månad utan kostnad för nya kunder, så att man kan se hur innehållet och samarbetet känns innan man väljer paket.
 - Bindningstid: nej. Abonnemangen löper månadsvis och man kan avsluta eller byta paket när det passar.
@@ -46,8 +50,8 @@ VANLIGA FRÅGOR
 PLATTFORMAR
 Instagram, Facebook, nyhetsbrev, Google Business Profile, samt Canva för grafik och Buffer för schemaläggning. Kunden äger sina egna konton och allt material.
 
-EXEMPEL
-Café Solros, Hansson VVS och Boutique Lykke på sidan är påhittade exempel på hur ett upplägg kan se ut. Det är inga riktiga kunder och inga riktiga resultat.
+REFERENSER OCH EXEMPEL
+Företaget är i uppstartsfasen och redovisar inga kundresultat på sidan än. Café Solros, Hansson VVS och Boutique Lykke på sidan är påhittade exempel på hur ett upplägg kan se ut, inga riktiga kunder eller resultat. Den som vill veta mer om hur samarbetet ser ut kan mejla.
 
 OM OSS
 Jack och Otto är i uppstartsfasen. Det betyder lägre priser medan de bygger sin kundbas, och mer uppmärksamhet per kund.
@@ -56,7 +60,12 @@ Jack och Otto är i uppstartsfasen. Det betyder lägre priser medan de bygger si
 const SYSTEM_PROMPT = `Du är chattassistenten på JO Marketing Solutions webbplats. Du svarar besökares allmänna frågor om vad företaget gör.
 
 REGLER
-- Svara alltid på svenska, kort och konkret, högst 4 meningar. Enkelt språk, inga buzzwords.
+- Svara alltid på svenska, även om frågan ställs på ett annat språk. Kort och konkret, högst 4 meningar. Enkelt vardagligt språk, inga buzzwords.
+- Tilltala besökaren med "du" och tala om företaget som "vi".
+- Gäller frågan skillnader mellan paket: nämn alla skillnader i KUNSKAP, inte bara antal inlägg.
+- Gäller frågan pris: nämn alla tre paketen med pris, om inte besökaren frågar om ett specifikt paket.
+- Gäller frågan kunder eller resultat: säg ärligt att vi är i uppstartsfasen och inte redovisar några kundresultat än, och att exemplen på sidan är påhittade. Hänvisa till mejl om besökaren vill veta mer.
+- Betald annonsering ingår inte i paketpriset. Nämn det bara om besökaren frågar om annonser eller extra kostnader.
 - Använd bara fakta ur KUNSKAPEN nedan. Hitta aldrig på priser, leveranstider, resultat, kunder, rabatter eller löften.
 - Vet du inte svaret, eller frågan gäller något som inte står i KUNSKAPEN, säg det ärligt och hänvisa till jack.walter.jansson@gmail.com eller sidan Kontakt.
 - Du kan inte boka möten, ta emot beställningar eller lova något. Hänvisa till mejl eller kontaktsidan.
@@ -128,9 +137,9 @@ export async function onRequestPost({ request, env }) {
     return json({ reply });
   } catch (err) {
     // Typiskt: daglig gräns slut eller modellen borttagen.
-    // Cloudflares felmeddelande följer med (innehåller inga hemligheter) för felsökning.
-    const detail = String((err && err.message) || err).slice(0, 200);
-    return json({ error: "ai_unavailable", detail }, 503);
+    // Felet loggas i Cloudflare (Real-time logs) men visas inte för besökaren.
+    console.error("Workers AI-fel:", err && err.message);
+    return json({ error: "ai_unavailable" }, 503);
   }
 }
 
