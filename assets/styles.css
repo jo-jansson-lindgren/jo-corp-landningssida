@@ -488,6 +488,26 @@ section{ padding:4.25rem 0; position:relative; }
 .tier .price-perks .perk{ font-size:.9rem; align-items:flex-start; }
 .tier .btn-primary, .tier .btn-ghost{ justify-content:center; width:100%; }
 
+/* period switch (paket.html) */
+.period-switch{
+  display:flex; flex-wrap:wrap; gap:.4rem;
+  background:var(--panel); border:1px solid var(--line); border-radius:99px;
+  padding:.35rem; width:max-content; max-width:100%; margin:0 auto;
+}
+.period-opt{
+  font:inherit; font-size:.9rem; font-weight:600; color:var(--ink-soft);
+  background:transparent; border:0; border-radius:99px;
+  padding:.55rem 1rem; cursor:pointer; transition:background .2s ease, color .2s ease;
+}
+.period-opt em{ font-style:normal; font-family:'IBM Plex Mono', monospace; font-size:.75rem; color:var(--teal); margin-left:.2rem; }
+.period-opt[aria-checked="true"]{ background:var(--accent); color:#fff; }
+.period-opt[aria-checked="true"] em{ color:var(--accent-ink); }
+.period-opt:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+.period-note{ text-align:center; font-size:.88rem; color:var(--ink-faint); margin:.9rem 0 2.4rem; }
+@media (max-width:520px){ .period-switch{ border-radius:16px; justify-content:center; } .period-opt{ padding:.5rem .75rem; } }
+.tier-price .tp-amount{ font-size:1em; color:var(--ink); font-family:'Space Grotesk', sans-serif; font-weight:600; }
+.tier-total{ font-size:.82rem; color:var(--teal); font-weight:600; min-height:1.1em; margin-top:-.9rem; }
+
 /* faq */
 .faq{ display:flex; flex-direction:column; gap:.8rem; }
 .faq details{
