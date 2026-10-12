@@ -198,12 +198,16 @@
     link.rel = 'stylesheet';
     var me = SCRIPT || document.querySelector('script[src$="chat.js"]');
     link.href = me && me.src ? me.src.replace(/chat\.js(\?.*)?$/, 'chat.css') : 'assets/chat.css';
-    document.head.appendChild(link);
 
     load();
     render();
-    document.body.appendChild(launcher);
-    document.body.appendChild(panel);
+    // Montera först när stilen är laddad – annars syns panelen ostylad en kort stund
+    // vid varje sidbyte och animeras sedan bort.
+    link.addEventListener('load', function () {
+      document.body.appendChild(launcher);
+      document.body.appendChild(panel);
+    });
+    document.head.appendChild(link);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
