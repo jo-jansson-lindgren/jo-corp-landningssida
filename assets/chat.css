@@ -48,7 +48,10 @@ body:has(.cookie-bar.show) .jo-chat-launcher{ opacity:0; pointer-events:none; }
   background:none; border:0; color:#fff; cursor:pointer;
   width:2.5rem; height:2.5rem; border-radius:50%; font-size:1.4rem; line-height:1;
 }
-.jo-chat-close:hover{ background:rgba(255,255,255,.12); }
+@media (hover:hover) and (pointer:fine){ .jo-chat-close:hover{ background:rgba(255,255,255,.12); } }
+/* press feedback, same as the site's other buttons */
+.jo-chat-close, .jo-chat-chips button, .jo-chat-form button{ transition:transform .16s cubic-bezier(.23,1,.32,1); }
+.jo-chat-close:active, .jo-chat-chips button:active, .jo-chat-form button:active:not(:disabled){ transform:scale(.97); }
 
 .jo-chat-log{
   flex:1; overflow-y:auto; padding:1rem; display:flex; flex-direction:column; gap:.65rem;
@@ -58,10 +61,14 @@ body:has(.cookie-bar.show) .jo-chat-launcher{ opacity:0; pointer-events:none; }
   max-width:86%; padding:.6rem .85rem; border-radius:14px;
   white-space:pre-wrap; overflow-wrap:anywhere;
 }
+/* new messages fade up so the eye finds them */
+.jo-chat-msg{ animation:jo-chat-msg-in .2s cubic-bezier(.23,1,.32,1); }
+@keyframes jo-chat-msg-in{ from{ opacity:0; transform:translateY(6px); } }
 .jo-chat-msg.bot{ align-self:flex-start; background:#fff; border:1px solid var(--line,#e9e2d6); border-bottom-left-radius:4px; }
 .jo-chat-msg.user{ align-self:flex-end; background:var(--accent,#3b3bff); color:#fff; border-bottom-right-radius:4px; }
 .jo-chat-msg.typing{ color:var(--ink-faint,#786f64); }
 .jo-chat-msg.typing::after{ content:'…'; animation:jo-chat-dots 1.2s steps(4,end) infinite; }
+@keyframes jo-chat-fade-in{ from{ opacity:0; } }
 @keyframes jo-chat-dots{ 0%{ opacity:.2; } 50%{ opacity:1; } 100%{ opacity:.2; } }
 
 .jo-chat-chips{ display:flex; flex-wrap:wrap; gap:.4rem; }
@@ -70,7 +77,7 @@ body:has(.cookie-bar.show) .jo-chat-launcher{ opacity:0; pointer-events:none; }
   border:1px solid transparent; border-radius:99px; padding:.5rem .8rem; min-height:2.5rem;
   font-family:inherit; font-weight:600; font-size:.85rem; line-height:1.2; cursor:pointer;
 }
-.jo-chat-chips button:hover{ border-color:var(--accent,#3b3bff); }
+@media (hover:hover) and (pointer:fine){ .jo-chat-chips button:hover{ border-color:var(--accent,#3b3bff); } }
 
 .jo-chat-form{
   display:flex; gap:.5rem; padding:.7rem; border-top:1px solid var(--line,#e9e2d6); background:#fff;
@@ -100,6 +107,7 @@ body:has(.cookie-bar.show) .jo-chat-launcher{ opacity:0; pointer-events:none; }
 }
 @media (prefers-reduced-motion:reduce){
   .jo-chat-launcher{ transition:none; }
+  .jo-chat-msg{ animation-name:jo-chat-fade-in; }
   /* fade only, no movement */
   .jo-chat-panel{ opacity:0; transform:none; transition:opacity .2s ease, visibility 0s linear .2s; }
   .jo-chat-panel.open{ opacity:1; transition:opacity .2s ease, visibility 0s; }

@@ -493,7 +493,7 @@ section{ padding:4.25rem 0; position:relative; }
 .period-opt{
   font:inherit; font-size:.9rem; font-weight:600; color:var(--ink-soft);
   background:transparent; border:0; border-radius:99px;
-  padding:.55rem 1rem; cursor:pointer; transition:background .2s ease, color .2s ease;
+  padding:.55rem 1rem; cursor:pointer; transition:background .2s ease, color .2s ease, transform .16s cubic-bezier(.23,1,.32,1);
 }
 .period-opt em{ font-style:normal; font-family:'IBM Plex Mono', monospace; font-size:.75rem; color:var(--teal); margin-left:.2rem; }
 .period-opt[aria-checked="true"]{ background:var(--accent); color:#fff; }
@@ -503,6 +503,11 @@ section{ padding:4.25rem 0; position:relative; }
 @media (max-width:520px){ .period-switch{ border-radius:16px; justify-content:center; } .period-opt{ padding:.5rem .75rem; } }
 .tier-price .tp-amount{ font-size:1em; color:var(--ink); font-family:'Space Grotesk', sans-serif; font-weight:600; }
 .tier-total{ font-size:.82rem; color:var(--teal); font-weight:600; min-height:1.1em; margin-top:-.9rem; }
+/* text swap when the period changes, so the new price reads as changed */
+.tier-price .tp-amount{ display:inline-block; }
+.swap-in{ animation:swapIn .15s ease-in-out; }
+@keyframes swapIn{ from{ opacity:0; filter:blur(2px); transform:translateY(4px); } }
+@media (prefers-reduced-motion:reduce){ .swap-in{ animation-name:fadeIn; } }
 
 /* faq */
 .faq{ display:flex; flex-direction:column; gap:.8rem; }
@@ -527,6 +532,10 @@ section{ padding:4.25rem 0; position:relative; }
 }
 .faq details[open] summary::after{ content:"–"; }
 .faq details p{ margin-top:.8rem; color:var(--ink-soft); font-size:.94rem; line-height:1.6; }
+/* the answer settles in on open; closing stays instant */
+.faq details[open] p, .longform[open] .longform-body{ animation:detailsIn .2s cubic-bezier(.23,1,.32,1); }
+@keyframes detailsIn{ from{ opacity:0; transform:translateY(-4px); } }
+@media (prefers-reduced-motion:reduce){ .faq details[open] p, .longform[open] .longform-body{ animation-name:fadeIn; } }
 
 /* chips */
 .chips{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.4rem; }
@@ -861,3 +870,4 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 /* press feedback; after the hover rules so it wins while hovering */
 .nav-cta:active, .btn-primary:active, .btn-ghost:active{ transform:scale(.97); transition-duration:.16s; }
 .chip:active{ transform:scale(.97); transition-duration:.16s; }
+.period-opt:active{ transform:scale(.97); }

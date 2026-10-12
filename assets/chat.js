@@ -192,21 +192,24 @@
     }
   });
 
-  function init() {
-    // Ladda stilen relativt scriptets plats.
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    var me = SCRIPT || document.querySelector('script[src$="chat.js"]');
-    link.href = me && me.src ? me.src.replace(/chat\.js(\?.*)?$/, 'chat.css') : 'assets/chat.css';
+  function mount() {
+    document.body.appendChild(launcher);
+    document.body.appendChild(panel);
+  }
 
+  function init() {
     load();
     render();
-    // Montera först när stilen är laddad – annars syns panelen ostylad en kort stund
-    // vid varje sidbyte och animeras sedan bort.
-    link.addEventListener('load', function () {
-      document.body.appendChild(launcher);
-      document.body.appendChild(panel);
-    });
+    // chat.css länkas i varje sidas <head>, före det här scriptet, så stilen är redan
+    // laddad här. Saknas länken på en sida laddar vi den själv och monterar när den är
+    // klar (annars syns panelen ostylad en kort stund) – eller ändå, om den inte går att ladda.
+    if (document.querySelector('link[rel="stylesheet"][href*="chat.css"]')) { mount(); return; }
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    var me = SCRIPT || document.querySelector('script[src*="chat.js"]');
+    link.href = me && me.src ? me.src.replace(/chat\.js([?#].*)?$/, 'chat.css') : 'assets/chat.css';
+    link.addEventListener('load', mount);
+    link.addEventListener('error', mount);
     document.head.appendChild(link);
   }
 

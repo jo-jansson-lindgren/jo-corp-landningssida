@@ -12,6 +12,7 @@
 <meta property="og:type" content="website" />
 <link rel="icon" href="assets/favicon.png" type="image/png" />
 <link rel="stylesheet" href="assets/styles.css" />
+<link rel="stylesheet" href="assets/chat.css" />
 <script src="assets/site.js" defer></script>
 <script src="assets/chat.js" defer></script>
   <!-- Metricool besöksstatistik -->
@@ -254,18 +255,25 @@
   };
   var opts = document.querySelectorAll('.period-opt');
   var note = document.getElementById('period-note');
+  // spela upp textbytet igen även om det redan pågår
+  function swap(el) { el.classList.remove('swap-in'); void el.offsetWidth; el.classList.add('swap-in'); }
   function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
   function setPeriod(p) {
+    var cur = document.querySelector('.period-opt[aria-checked="true"]');
+    if (cur && cur.dataset.period === p) return;
     opts.forEach(function (o) { o.setAttribute('aria-checked', o.dataset.period === p ? 'true' : 'false'); });
     document.querySelectorAll('.tier-price[data-p1]').forEach(function (el) {
       var v = el.getAttribute('data-p' + p);
-      el.querySelector('.tp-amount').textContent = v + ' kr';
+      var amount = el.querySelector('.tp-amount');
+      amount.textContent = v + ' kr';
+      swap(amount);
       var total = el.parentNode.querySelector('.tier-total');
       if (p === '1') { total.textContent = ''; }
       else {
         var sum = parseInt(v.replace(/\s/g, ''), 10) * parseInt(p, 10);
         var full = parseInt(el.getAttribute('data-p1').replace(/\s/g, ''), 10) * parseInt(p, 10);
         total.textContent = fmt(sum) + ' kr för ' + p + ' mån · du sparar ' + fmt(full - sum) + ' kr';
+        swap(total);
       }
     });
     if (note) note.textContent = notes[p];
