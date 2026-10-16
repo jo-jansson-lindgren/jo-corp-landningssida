@@ -108,7 +108,7 @@
   }
 
   // ---------- cookie notice ----------
-  // Cloudflare Web Analytics and Metricool are cookie-free (no personal data stored), and Google
+  // Cloudflare Web Analytics, Metricool and Umami are cookie-free (no personal data stored), and Google
   // Fonts is loaded on every page load. We still show a short, honest notice with
   // a link to the full cookie policy, and remember the choice so it only shows once.
   try {
@@ -120,7 +120,7 @@
       bar.setAttribute('role', 'region');
       bar.setAttribute('aria-label', 'Om kakor på den här webbplatsen');
       bar.innerHTML =
-        '<p>Vi använder inga spårande kakor. Sidan laddar typsnitt från Google Fonts och kakfri besöksstatistik (Cloudflare Web Analytics och Metricool). ' +
+        '<p>Vi använder inga spårande kakor. Sidan laddar typsnitt från Google Fonts och kakfri besöksstatistik (Cloudflare Web Analytics, Metricool och Umami). ' +
         '<a href="cookies.html">Läs mer i vår cookiepolicy</a>.</p>' +
         '<div class="cookie-bar-actions">' +
         '<button type="button" class="btn-primary" data-cookie-accept>Jag förstår</button>' +
@@ -136,5 +136,63 @@
   } catch (e) {
     // localStorage unavailable (private browsing etc.) — fail silently, no banner.
   }
+
+  // ---------- Umami: cookie-free visit + click statistics ----------
+  // Paste the Website ID from Umami (Settings → Websites → Edit) below. Empty = Umami is off.
+  var UMAMI_ID = 'abd0c4ee-d6bd-4f78-8da4-59212f03ae7c';
+  if (UMAMI_ID) {
+    var um = document.createElement('script');
+    um.defer = true;
+    um.src = 'https://cloud.umami.is/script.js';
+    um.setAttribute('data-website-id', UMAMI_ID);
+    um.setAttribute('data-domains', 'jo-corp-landningssida.pages.dev');
+    document.head.appendChild(um);
+  }
+
+  // Sends a named event to Umami. Never sends what people type — only which button was used and where.
+  function track(name, data) {
+    try {
+      if (window.umami && typeof window.umami.track === 'function') window.umami.track(name, data);
+    } catch (e) {}
+  }
+  function page() {
+    var p = location.pathname.replace(/^\//, '').replace(/\.html$/, '');
+    return p || 'index';
+  }
+  function placeOf(el) {
+    if (el.closest('header, .nav')) return 'meny';
+    if (el.closest('footer')) return 'sidfot';
+    if (el.closest('.hero')) return 'toppen';
+    return 'innehåll';
+  }
+
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target : null;
+    if (!t) return;
+
+    if (t.closest('.jo-chat-launcher')) { track('Chatt öppnad', { sida: page() }); return; }
+    if (t.closest('[data-news-open]')) { track('Film spelad', { sida: page() }); return; }
+
+    var a = t.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+
+    if (href.indexOf('mailto:') === 0) {
+      track('Mejl-klick', { sida: page(), plats: placeOf(a) });
+    } else if (href.indexOf('tel:') === 0) {
+      track('Ring-klick', { sida: page(), plats: placeOf(a) });
+    } else if (a.closest('.tier')) {
+      var tierName = a.closest('.tier').querySelector('.tier-name');
+      track('Paket valt', { paket: tierName ? tierName.textContent.trim() : 'okänt' });
+    } else if (/kontakt\.html/.test(href) && a.matches('.btn-primary, .btn-ghost, .nav-cta')) {
+      track('Knapp till kontakt', { sida: page(), plats: placeOf(a), text: a.textContent.trim().slice(0, 40) });
+    } else if (/^https?:/.test(href) && a.hostname !== location.hostname) {
+      track('Extern länk', { till: a.hostname, sida: page() });
+    }
+  });
+
+  document.addEventListener('submit', function (e) {
+    if (e.target.closest && e.target.closest('[class*="jo-chat"]')) track('Chattfråga skickad', { sida: page() });
+  });
 
 })();
