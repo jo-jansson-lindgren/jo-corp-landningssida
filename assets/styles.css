@@ -204,27 +204,31 @@ section[id]{ scroll-margin-top:5.5rem; }
 /* ---------- hero (start page only) ---------- */
 .hero{ padding:4.5rem 0 4.5rem; overflow:hidden; position:relative; }
 
-.hero-mesh{
-  position:absolute; inset:-20% -10% auto -10%; height:130%;
-  z-index:0; pointer-events:none;
-  background:
-    radial-gradient(38% 45% at 78% 18%, rgba(59,59,255,.20), transparent 70%),
-    radial-gradient(30% 38% at 92% 55%, rgba(255,90,60,.16), transparent 70%),
-    radial-gradient(34% 40% at 60% 78%, rgba(15,138,114,.13), transparent 70%);
-  filter:blur(10px);
-  animation:meshDrift 22s ease-in-out infinite alternate;
-}
 @keyframes meshDrift{
   0%{ transform:translate3d(0,0,0) scale(1); }
   100%{ transform:translate3d(-1.5%,2%,0) scale(1.05); }
 }
-@media (prefers-reduced-motion:reduce){ .hero-mesh{ animation:none; } }
 
 .hero .wrap{
   display:grid; grid-template-columns:1fr; gap:3rem; align-items:center;
   z-index:1;
 }
+@media (min-width:960px){ .hero .wrap{ grid-template-columns:1.2fr .8fr; gap:4rem; } }
 .hero-copy{ max-width:52rem; }
+
+/* three example posts, overlapping like prints on a table */
+.hero-visual{ margin:0; position:relative; max-width:26rem; justify-self:center; width:100%; }
+.hero-stack{ position:relative; aspect-ratio:1 / 1.08; }
+.hero-stack img{
+  position:absolute; display:block; object-fit:cover; height:auto;
+  border-radius:14px; background:var(--accent-soft);
+  box-shadow:0 30px 50px -28px var(--shadow-strong), 0 2px 6px var(--shadow);
+}
+.hero-stack .s1{ width:68%; aspect-ratio:1; left:0; top:4%; transform:rotate(-4deg); z-index:1; }
+.hero-stack .s2{ width:56%; aspect-ratio:1; right:0; top:0; transform:rotate(3deg); }
+.hero-stack .s3{ width:60%; aspect-ratio:1; right:8%; bottom:0; transform:rotate(-1.5deg); z-index:2; border:5px solid var(--panel); }
+.hero-visual figcaption{ margin-top:1.1rem; font-size:.82rem; color:var(--ink-faint); text-align:center; }
+@media (max-width:959px){ .hero-visual{ max-width:22rem; } }
 .hero h1{
   margin-top:1rem;
   font-size:clamp(2.3rem, 3.2vw + 1.2rem, 3.5rem);
@@ -732,14 +736,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 
 
 /* ---------- v2: välkomnande hero, band, tidslinje, värden ---------- */
-.hero-orbs{ position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
-.orb{ position:absolute; border-radius:50%; will-change:transform; }
-.orb.o1{ width:15rem; height:15rem; right:8%; top:12%; background:radial-gradient(circle at 30% 30%, rgba(59,59,255,.35), rgba(59,59,255,0) 70%); animation:orbFloat 14s ease-in-out infinite alternate; }
-.orb.o2{ width:9rem; height:9rem; right:26%; bottom:10%; background:radial-gradient(circle at 30% 30%, rgba(255,90,60,.35), rgba(255,90,60,0) 70%); animation:orbFloat 11s ease-in-out -3s infinite alternate; }
-.orb.o3{ width:6rem; height:6rem; right:3%; bottom:28%; background:radial-gradient(circle at 30% 30%, rgba(15,138,114,.35), rgba(15,138,114,0) 70%); animation:orbFloat 9s ease-in-out -6s infinite alternate; }
-@keyframes orbFloat{ 0%{ transform:translate3d(0,0,0) scale(1); } 100%{ transform:translate3d(-24px,28px,0) scale(1.12); } }
-@media (max-width:959px){ .orb.o1{ right:-4rem; } .orb.o2{ right:4%; } }
-@media (prefers-reduced-motion:reduce){ .orb{ animation:none; } }
 
 .hero h1 .accent{
   background:linear-gradient(100deg, var(--accent), #7a5cff 55%, var(--coral));
@@ -819,7 +815,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 .value h3{ font-size:1.1rem; margin-bottom:.4rem; }
 .value p{ color:var(--ink-soft); font-size:.95rem; line-height:1.55; }
 
-#tjanster, #pris{ background:linear-gradient(180deg, rgba(236,235,255,.45), transparent 60%); }
 
 
 /* ---------- v3: exempelsidor ---------- */

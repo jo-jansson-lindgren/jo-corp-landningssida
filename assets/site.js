@@ -69,44 +69,6 @@
     tl.style.setProperty('--tl', '1');
   }
 
-  // ---------- hero shapes follow the pointer (desktop only) ----------
-  var heroEl = document.querySelector('.hero');
-  var orbs = document.querySelector('.hero-orbs');
-  if (heroEl && orbs && !reduceMotion && window.matchMedia('(hover:hover)').matches) {
-    // spring instead of a CSS transition: the shapes keep their momentum and settle naturally
-    var target = { x: 0, y: 0 }, pos = { x: 0, y: 0 }, vel = { x: 0, y: 0 }, raf = 0, last = 0, acc = 0;
-    var TICK = 1000 / 60; // fixed 60 Hz physics step, so the feel is the same on 60 and 120 Hz screens
-    var step = function (now) {
-      acc += Math.min(now - (last || now - TICK), 64); // cap the catch-up after a stalled tab
-      last = now;
-      for (; acc >= TICK; acc -= TICK) {
-        vel.x = (vel.x + (target.x - pos.x) * 0.06) * 0.8; // stiffness, damping
-        vel.y = (vel.y + (target.y - pos.y) * 0.06) * 0.8;
-        pos.x += vel.x;
-        pos.y += vel.y;
-      }
-      var moving = Math.abs(target.x - pos.x) > 0.05 || Math.abs(vel.x) > 0.05 ||
-                   Math.abs(target.y - pos.y) > 0.05 || Math.abs(vel.y) > 0.05;
-      orbs.style.transform = 'translate3d(' + pos.x.toFixed(1) + 'px,' + pos.y.toFixed(1) + 'px,0)';
-      if (moving) { raf = requestAnimationFrame(step); } else { raf = 0; last = 0; acc = 0; }
-    };
-    // measure the hero once per entry (in page coordinates, so scrolling doesn't stale it)
-    // instead of forcing a layout read on every mousemove
-    var box = null;
-    var measure = function () {
-      var r = heroEl.getBoundingClientRect();
-      box = { left: r.left + window.scrollX, top: r.top + window.scrollY, w: r.width, h: r.height };
-    };
-    heroEl.addEventListener('mouseenter', measure);
-    window.addEventListener('resize', function () { box = null; });
-    heroEl.addEventListener('mousemove', function (e) {
-      if (!box) measure();
-      target.x = ((e.pageX - box.left) / box.w - 0.5) * -28;
-      target.y = ((e.pageY - box.top) / box.h - 0.5) * -28;
-      if (!raf) raf = requestAnimationFrame(step);
-    });
-  }
-
   // ---------- cookie notice ----------
   // Cloudflare Web Analytics, Metricool and Umami are cookie-free (no personal data stored), and the
   // fonts are served from our own domain. We still show a short, honest notice with
