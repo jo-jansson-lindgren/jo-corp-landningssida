@@ -15,7 +15,7 @@ const hits = new Map();
 
 const KUNSKAP = `
 OM FÖRETAGET
-JO Marketing Solutions är en marknadsföringsbyrå för lokala och växande företag. Det är Jack och Otto, två personer i uppstartsfasen. De erbjuder strategi, varumärke och innehåll, och rapporterar resultat varje månad i klarspråk.
+JO Marketing Solutions är en marknadsföringsbyrå för lokala och växande företag. Det är Jack och Otto, två personer i uppstartsfasen. De skriver inlägg, tar fram grafik och schemalägger publicering på Instagram och Facebook åt lokala företag. Varje månad görs en avstämning; i Standard och Plus ingår en månadsrapport i klarspråk.
 Kontakt: jack.walter.jansson@gmail.com. De svarar oftast inom ett dygn.
 
 TJÄNSTER
@@ -31,7 +31,7 @@ SÅ GÅR DET TILL
 
 PAKET OCH PRISER (ordinarie månadspris, exkl. moms, ingen bindningstid vid månadsvis betalning)
 - Mini, 900 kr/mån: 4 inlägg per månad (Instagram + Facebook), enkel innehållsplan varje månad, grafik och mallar i Canva, schemalagd publicering, kort månadsavstämning.
-- Standard, 1 800 kr/mån (vanligaste nivån): 8–10 inlägg per månad, innehållsplan och tonalitet anpassad efter varumärket, egen visuell linje med återanvändbara mallar, uppdaterad Google Business Profile, ett nyhetsbrev per månad, månadsrapport med räckvidd och engagemang.
+- Standard, 1 800 kr/mån (den nivå vi oftast föreslår): 8–10 inlägg per månad, innehållsplan och tonalitet anpassad efter varumärket, egen visuell linje med återanvändbara mallar, uppdaterad Google Business Profile, ett nyhetsbrev per månad, månadsrapport med räckvidd och engagemang.
 - Plus, 2 800 kr/mån: allt i Standard, 12–16 inlägg per månad, ett kampanjupplägg per kvartal, två nyhetsbrev per månad, fördjupad månadsrapport med rekommendationer, avstämning varannan vecka.
 Ingår alltid: kunden godkänner allt innan publicering, gratis testmånad för nya kunder, all grafik och alla mallar får kunden behålla.
 
@@ -58,7 +58,7 @@ VANLIGA FRÅGOR
 - Extra kostnader: bara om kunden väljer tillvalet Annonsboost (149 kr per inlägg, se ovan).
 
 PLATTFORMAR
-Instagram, Facebook, nyhetsbrev, Google Business Profile, samt Canva för grafik och Buffer för schemaläggning. Kunden äger sina egna konton och allt material.
+Instagram, Facebook, nyhetsbrev, Google Business Profile, samt Canva för grafik. Inläggen schemaläggs i förväg. Kunden äger sina egna konton och allt material.
 
 REFERENSER OCH EXEMPEL
 Företaget är i uppstartsfasen och redovisar inga kundresultat på sidan än. Hur många kunder företaget har är inte angivet. Café Solros, Hansson VVS och Boutique Lykke på sidan är påhittade exempel på hur ett upplägg kan se ut, inga riktiga kunder eller resultat. Den som vill veta mer om hur samarbetet ser ut kan mejla.

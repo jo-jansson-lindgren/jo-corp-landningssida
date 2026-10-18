@@ -2,18 +2,18 @@
 .jo-chat-launcher{
   position:fixed; right:1rem; bottom:1rem; z-index:90;
   display:flex; align-items:center; gap:.55rem;
-  background:var(--accent,#3b3bff); color:#fff;
+  background:var(--accent,#2e4fa8); color:#fff;
   border:0; border-radius:99px; padding:.85rem 1.15rem;
-  font:600 .95rem/1 'Inter',-apple-system,'Segoe UI',sans-serif;
+  font:600 .95rem/1 var(--font-body,'Geist',sans-serif);
   cursor:pointer; min-height:3rem;
-  box-shadow:0 18px 36px -14px rgba(59,59,255,.55), 0 4px 12px rgba(22,19,20,.15);
+  box-shadow:0 18px 36px -14px rgba(46,79,168,.45), 0 4px 12px rgba(22,19,20,.15);
   transition:transform .2s cubic-bezier(.22,1,.36,1), box-shadow .2s ease, opacity .2s ease;
 }
 @media (hover:hover) and (pointer:fine){ .jo-chat-launcher:hover{ transform:translateY(-2px); } }
 .jo-chat-launcher:active{ transform:scale(.97); transition-duration:.16s; }
 .jo-chat-launcher:focus-visible,
 .jo-chat-panel button:focus-visible,
-.jo-chat-panel textarea:focus-visible{ outline:3px solid #161314; outline-offset:2px; }
+.jo-chat-panel textarea:focus-visible{ outline:3px solid #171512; outline-offset:2px; }
 .jo-chat-launcher svg{ width:1.25rem; height:1.25rem; flex:none; }
 .jo-chat-launcher[hidden]{ display:none; }
 /* Cookie-rutan ska inte hamna bakom knappen */
@@ -24,10 +24,10 @@ body:has(.cookie-bar.show) .jo-chat-launcher{ opacity:0; pointer-events:none; }
   width:min(24rem, calc(100vw - 2rem));
   height:min(34rem, calc(100vh - 2rem));
   display:flex; flex-direction:column;
-  background:var(--panel,#fff); color:var(--ink,#161314);
+  background:var(--panel,#fff); color:var(--ink,#171512);
   border:1px solid var(--line,#e9e2d6); border-radius:20px;
   box-shadow:0 40px 80px -30px rgba(22,19,20,.45);
-  font:400 .95rem/1.5 'Inter',-apple-system,'Segoe UI',sans-serif;
+  font:400 .95rem/1.5 var(--font-body,'Geist',sans-serif);
   overflow:hidden;
   opacity:0; transform:translateY(12px) scale(.97); transform-origin:bottom right; pointer-events:none;
   /* visibility hides the closed panel once it has animated out, so crossing the
@@ -40,9 +40,9 @@ body:has(.cookie-bar.show) .jo-chat-launcher{ opacity:0; pointer-events:none; }
 
 .jo-chat-head{
   display:flex; align-items:center; justify-content:space-between; gap:.75rem;
-  padding:.9rem 1rem; background:var(--ink,#161314); color:#fff;
+  padding:.9rem 1rem; background:var(--ink,#171512); color:#fff;
 }
-.jo-chat-head strong{ font:600 1rem/1.2 'Space Grotesk','Inter',sans-serif; display:block; }
+.jo-chat-head strong{ font:600 1rem/1.2 var(--font-display,'Geist',sans-serif); display:block; }
 .jo-chat-head span{ font-size:.78rem; color:#c9cad6; }
 .jo-chat-close{
   background:none; border:0; color:#fff; cursor:pointer;
@@ -65,7 +65,7 @@ body:has(.cookie-bar.show) .jo-chat-launcher{ opacity:0; pointer-events:none; }
 .jo-chat-msg{ animation:jo-chat-msg-in .2s cubic-bezier(.23,1,.32,1); }
 @keyframes jo-chat-msg-in{ from{ opacity:0; transform:translateY(6px); } }
 .jo-chat-msg.bot{ align-self:flex-start; background:#fff; border:1px solid var(--line,#e9e2d6); border-bottom-left-radius:4px; }
-.jo-chat-msg.user{ align-self:flex-end; background:var(--accent,#3b3bff); color:#fff; border-bottom-right-radius:4px; }
+.jo-chat-msg.user{ align-self:flex-end; background:var(--accent,#2e4fa8); color:#fff; border-bottom-right-radius:4px; }
 .jo-chat-msg.typing{ color:var(--ink-faint,#786f64); }
 .jo-chat-msg.typing::after{ content:'…'; animation:jo-chat-dots 1.2s steps(4,end) infinite; }
 @keyframes jo-chat-fade-in{ from{ opacity:0; } }
@@ -73,11 +73,11 @@ body:has(.cookie-bar.show) .jo-chat-launcher{ opacity:0; pointer-events:none; }
 
 .jo-chat-chips{ display:flex; flex-wrap:wrap; gap:.4rem; }
 .jo-chat-chips button{
-  background:var(--accent-soft,#ecebff); color:var(--accent,#3b3bff);
+  background:var(--accent-soft,#e7ecf7); color:var(--accent,#2e4fa8);
   border:1px solid transparent; border-radius:99px; padding:.5rem .8rem; min-height:2.5rem;
   font-family:inherit; font-weight:600; font-size:.85rem; line-height:1.2; cursor:pointer;
 }
-@media (hover:hover) and (pointer:fine){ .jo-chat-chips button:hover{ border-color:var(--accent,#3b3bff); } }
+@media (hover:hover) and (pointer:fine){ .jo-chat-chips button:hover{ border-color:var(--accent,#2e4fa8); } }
 
 .jo-chat-form{
   display:flex; gap:.5rem; padding:.7rem; border-top:1px solid var(--line,#e9e2d6); background:#fff;
@@ -87,7 +87,7 @@ body:has(.cookie-bar.show) .jo-chat-launcher{ opacity:0; pointer-events:none; }
   padding:.6rem .75rem; font:inherit; color:inherit; min-height:2.75rem; max-height:6rem;
 }
 .jo-chat-form button{
-  background:var(--accent,#3b3bff); color:#fff; border:0; border-radius:12px;
+  background:var(--accent,#2e4fa8); color:#fff; border:0; border-radius:12px;
   padding:0 1rem; font-family:inherit; font-weight:600; font-size:.9rem; line-height:1; cursor:pointer; min-height:2.75rem;
 }
 .jo-chat-form button:disabled{ opacity:.5; cursor:default; }
@@ -96,7 +96,7 @@ body:has(.cookie-bar.show) .jo-chat-launcher{ opacity:0; pointer-events:none; }
   padding:.45rem .8rem .6rem; background:#fff; font-size:.74rem; line-height:1.4;
   color:var(--ink-faint,#786f64);
 }
-.jo-chat-foot a{ color:var(--accent,#3b3bff); }
+.jo-chat-foot a{ color:var(--accent,#2e4fa8); }
 
 @media (max-width:520px){
   .jo-chat-panel{ right:0; bottom:0; width:100vw; height:min(36rem, 85vh); border-radius:20px 20px 0 0; }
