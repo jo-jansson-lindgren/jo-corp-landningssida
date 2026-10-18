@@ -27,7 +27,7 @@
       '<source src="' + VIDEO + '" type="video/mp4" />' +
       'Din webbläsare kan inte spela upp filmen.</video>' +
       '<div class="jo-film-bar"><p>46 sekunder om hur vi håller ditt företags sociala medier igång.</p>' +
-      '<a class="btn-primary" href="kontakt.html">Boka ett samtal ' +
+      '<a class="btn-primary" href="kontakt.html">Kontakta oss ' +
       '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>';
     document.body.appendChild(film);
     var video = film.querySelector('video');
