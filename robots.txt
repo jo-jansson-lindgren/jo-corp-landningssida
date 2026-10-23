@@ -1,0 +1,5 @@
+# Every page may be read by search engines, except the chat robot's server address.
+User-agent: *
+Disallow: /api/
+
+Sitemap: https://jo-corp-landningssida.pages.dev/sitemap.xml

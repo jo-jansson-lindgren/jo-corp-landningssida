@@ -7,15 +7,17 @@
 <meta name="robots" content="noindex" />
 <link rel="icon" href="/assets/favicon.png" type="image/png" />
 <link rel="stylesheet" href="/assets/styles.css" />
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/lenis.min.js" defer></script>
 <script src="/assets/site.js" defer></script>
 </head>
-<body>
+<body class="cloud">
 
 <a class="skip" href="#main">Till innehållet</a>
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="/"><img src="/assets/logo-nav.png" alt="JO Marketing Solutions" width="33" height="33" />JO Marketing Solutions</a>
-    <a class="nav-cta" href="/kontakt.html">Kontakta oss</a>
   </div>
 </header>
 
@@ -33,11 +35,28 @@
       </nav>
     </div>
   </section>
+  <section class="endmenu" aria-labelledby="endmenu-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Fortsätt</p>
+        <h2 id="endmenu-title">Hela sajten, på ett ställe</h2>
+      </div>
+      <ul class="endmenu-grid">
+        <li class="reveal"><a href="/tjanster.html" data-page="tjanster"><span class="num">01</span><span><strong>Tjänster</strong><small>Strategi, varumärke och innehåll, och uppföljning varje månad.</small></span><span class="arrow" aria-hidden="true">→</span></a></li>
+        <li class="reveal"><a href="/paket.html" data-page="paket"><span class="num">02</span><span><strong>Paket &amp; pris</strong><small>Från 900 kr i månaden. Ingen bindning, månad för månad.</small></span><span class="arrow" aria-hidden="true">→</span></a></li>
+        <li class="reveal"><a href="/plattformar.html" data-page="plattformar"><span class="num">03</span><span><strong>Plattformar</strong><small>Instagram, Facebook, Canva, nyhetsbrev och Google Business Profile.</small></span><span class="arrow" aria-hidden="true">→</span></a></li>
+        <li class="reveal"><a href="/exempel.html" data-page="exempel"><span class="num">04</span><span><strong>Exempel</strong><small>Tre exempel på hur ett upplägg kan se ut.</small></span><span class="arrow" aria-hidden="true">→</span></a></li>
+        <li class="reveal"><a href="/om-oss.html" data-page="om-oss"><span class="num">05</span><span><strong>Om oss</strong><small>Två personer bakom JO Marketing Solutions, och hur vi jobbar.</small></span><span class="arrow" aria-hidden="true">→</span></a></li>
+        <li class="reveal"><a href="/kontakt.html" data-page="kontakt"><span class="num">06</span><span><strong>Kontakt</strong><small>Boka ett samtal. Första månaden är gratis för nya kunder.</small></span><span class="arrow" aria-hidden="true">→</span></a></li>
+      </ul>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap">
     <div class="footer-bottom">© <span id="year"></span> JO Marketing Solutions</div>
+    <p class="footer-mark" aria-hidden="true">JO Marketing Solutions</p>
   </div>
 </footer>
 </body>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The pages search engines should know about. Same addresses as each page's canonical tag.
+     Legal pages and 404 are left out on purpose (they are noindex). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://jo-corp-landningssida.pages.dev/</loc></url>
+  <url><loc>https://jo-corp-landningssida.pages.dev/tjanster</loc></url>
+  <url><loc>https://jo-corp-landningssida.pages.dev/paket</loc></url>
+  <url><loc>https://jo-corp-landningssida.pages.dev/plattformar</loc></url>
+  <url><loc>https://jo-corp-landningssida.pages.dev/exempel</loc></url>
+  <url><loc>https://jo-corp-landningssida.pages.dev/case-cafe-solros</loc></url>
+  <url><loc>https://jo-corp-landningssida.pages.dev/case-hansson-vvs</loc></url>
+  <url><loc>https://jo-corp-landningssida.pages.dev/case-boutique-lykke</loc></url>
+  <url><loc>https://jo-corp-landningssida.pages.dev/om-oss</loc></url>
+  <url><loc>https://jo-corp-landningssida.pages.dev/kontakt</loc></url>
+</urlset>

@@ -14,46 +14,39 @@
 <link rel="stylesheet" href="assets/styles.css" />
 <link rel="stylesheet" href="assets/chat.css" />
 <link rel="stylesheet" href="assets/news.css" />
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/vendor/lenis.min.js" defer></script>
 <script src="assets/site.js" defer></script>
 <script src="assets/chat.js" defer></script>
 <script src="assets/news.js" defer></script>
   <!-- Metricool besöksstatistik -->
   <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"2c25e3d0df4e8039b9ecde25638a81e6"})});</script>
 </head>
-<body>
+<body class="cloud">
 
 <a class="skip" href="#main">Till innehållet</a>
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="index.html"><img src="assets/logo-nav.png" alt="JO Marketing Solutions" width="33" height="33" />JO Marketing Solutions</a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="navmenu" aria-label="Meny">
-      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-    </button>
-    <ul class="navlinks" id="navmenu">
-      <li><a href="tjanster.html">Tjänster</a></li>
-      <li><a href="paket.html">Paket &amp; pris</a></li>
-      <li><a href="plattformar.html">Plattformar</a></li>
-      <li><a href="exempel.html">Exempel</a></li>
-      <li><a href="om-oss.html" aria-current="page">Om oss</a></li>
-      <li><a href="kontakt.html">Kontakt</a></li>
-      <li class="navlinks-cta"><a class="btn-primary" href="kontakt.html">Kontakta oss</a></li>
-    </ul>
-    <a class="nav-cta" href="kontakt.html">Kontakta oss</a>
   </div>
 </header>
 
 <main id="main">
-  <section class="page-hero">
+  <section class="page-hero has-visual">
     <div class="wrap">
-      <p class="eyebrow hero-in d1">Om oss</p>
-      <h1 class="hero-in d2">Två personer, en tydlig idé</h1>
-      <p class="sub hero-in d3">Jack och Otto bygger JO Marketing Solutions tillsammans — två drivna unga killar som är övertygade om att marknadsföring för lokala företag borde funka bättre än vad det oftast gör.</p>
+      <div class="ph-text">
+        <p class="eyebrow hero-in d1">Om oss</p>
+        <h1 class="hero-in d2">Två personer, en tydlig idé</h1>
+        <p class="sub hero-in d3">Jack och Otto bygger JO Marketing Solutions tillsammans — två drivna unga killar som är övertygade om att marknadsföring för lokala företag borde funka bättre än vad det oftast gör.</p>
+      </div>
+      <div class="ph-visual hero-in d3"><a class="ph-film" href="#film"><img src="media/jo-launch-1x1-poster.jpg" alt="Stillbild ur vår film om JO Marketing Solutions" width="1080" height="1080" /><span class="ph-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span><span class="ph-film-cap">Se vår film · 46 sekunder</span></a></div>
     </div>
   </section>
 
   <hr class="hr" />
 
-  <section>
+  <section class="band">
     <div class="wrap">
       <div class="detail-body prose reveal">
         <p>Vi är Jack och Otto — två drivna unga killar som startade JO Marketing Solutions för att vi såg samma problem om och om igen: de flesta småföretag hamnar mellan två dåliga alternativ. Antingen betalar de för mycket för en traditionell byrå med långa avtal och otydliga leveranser, eller så sköter de allt själva utan tid eller verktyg för det. Ingetdera känns rätt när marginalerna redan är snäva och dagarna redan är fulla. Så vi bestämde oss för att bygga det tredje alternativet själva.</p>
@@ -77,6 +70,22 @@
           </a>
         </div>
       </div>
+    </div>
+  </section>
+  <section class="endmenu" aria-labelledby="endmenu-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Fortsätt</p>
+        <h2 id="endmenu-title">Hela sajten, på ett ställe</h2>
+      </div>
+      <ul class="endmenu-grid">
+        <li class="reveal"><a href="tjanster.html" data-page="tjanster"><span class="num">01</span><span><strong>Tjänster</strong><small>Strategi, varumärke och innehåll, och uppföljning varje månad.</small></span><span class="arrow" aria-hidden="true">→</span></a></li>
+        <li class="reveal"><a href="paket.html" data-page="paket"><span class="num">02</span><span><strong>Paket &amp; pris</strong><small>Från 900 kr i månaden. Ingen bindning, månad för månad.</small></span><span class="arrow" aria-hidden="true">→</span></a></li>
+        <li class="reveal"><a href="plattformar.html" data-page="plattformar"><span class="num">03</span><span><strong>Plattformar</strong><small>Instagram, Facebook, Canva, nyhetsbrev och Google Business Profile.</small></span><span class="arrow" aria-hidden="true">→</span></a></li>
+        <li class="reveal"><a href="exempel.html" data-page="exempel"><span class="num">04</span><span><strong>Exempel</strong><small>Tre exempel på hur ett upplägg kan se ut.</small></span><span class="arrow" aria-hidden="true">→</span></a></li>
+        <li class="reveal"><a href="om-oss.html" data-page="om-oss"><span class="num">05</span><span><strong>Om oss</strong><small>Två personer bakom JO Marketing Solutions, och hur vi jobbar.</small></span><span class="arrow" aria-hidden="true">→</span></a></li>
+        <li class="reveal"><a href="kontakt.html" data-page="kontakt"><span class="num">06</span><span><strong>Kontakt</strong><small>Boka ett samtal. Första månaden är gratis för nya kunder.</small></span><span class="arrow" aria-hidden="true">→</span></a></li>
+      </ul>
     </div>
   </section>
 </main>
@@ -103,6 +112,9 @@
         <h3>Kontakt</h3>
         <ul class="footer-links">
           <li><a href="mailto:jack.walter.jansson@gmail.com">jack.walter.jansson@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/jomarketingsolutions/" target="_blank" rel="me noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/people/JO-Marketing-Solutions/61595153663352/" target="_blank" rel="me noopener">Facebook</a></li>
+          <li><a href="https://www.tiktok.com/@jo.marketing.solutions" target="_blank" rel="me noopener">TikTok</a></li>
         </ul>
       </div>
     </div>
@@ -112,6 +124,7 @@
       <a href="anvandarvillkor.html">Användarvillkor</a>
       <a href="cookies.html">Cookies</a>
     </div>
+    <p class="footer-mark" aria-hidden="true">JO Marketing Solutions</p>
   </div>
 </footer>
 

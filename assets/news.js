@@ -81,7 +81,8 @@
     if (location.hash === '#film') { openFilm(); return; }
     if (seen()) return;
     buildNews();
-    setTimeout(function () { news.classList.add('show'); }, 1200);
+    var show = function () { setTimeout(function () { news.classList.add('show'); }, 1200); };
+    if (window.joAfterTour) window.joAfterTour(show); else show();
   }
 
   window.addEventListener('hashchange', function () { if (location.hash === '#film') openFilm(); });

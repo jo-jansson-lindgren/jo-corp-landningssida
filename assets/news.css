@@ -100,3 +100,33 @@ body:has(.cookie-bar.show) .jo-news{ opacity:0; pointer-events:none; visibility:
   .jo-news-tag::before{ animation:none; }
   .jo-film[open]{ animation:none; }
 }
+
+/* ---------- dark site theme: the popup and the player follow the black/grey look ----------
+   (in the dark theme --ink is near-white, which turned the box white) */
+body.dark .jo-news{
+  background:rgba(17,17,19,.92); color:#f4f4f5;
+  border:1px solid #26262a;
+  backdrop-filter:blur(14px) saturate(1.1); -webkit-backdrop-filter:blur(14px) saturate(1.1);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 30px 60px -24px rgba(0,0,0,.85);
+  font-family:Geist,-apple-system,'Segoe UI',sans-serif;
+}
+body.dark .jo-news-thumb{ background:#09090a; box-shadow:0 0 0 1px #26262a; }
+body.dark .jo-news-tag{ color:#a8a8b0; }
+body.dark .jo-news-tag::before{ background:#f4f4f5; animation:joNewsRing 2.6s ease-out infinite; }
+@keyframes joNewsRing{ 0%{ box-shadow:0 0 0 0 rgba(244,244,245,.5); } 70%,100%{ box-shadow:0 0 0 .45rem rgba(244,244,245,0); } }
+body.dark .jo-news-title{ color:#f4f4f5; font-family:Geist,-apple-system,'Segoe UI',sans-serif; letter-spacing:-.01em; }
+body.dark .jo-news-text{ color:#a8a8b0; }
+body.dark .jo-news .btn-primary,
+body.dark .jo-film-bar .btn-primary{ background:#f4f4f5; color:#09090a; }
+body.dark .jo-news-close{ color:#8c8c95; }
+body.dark .jo-news button:focus-visible,
+body.dark .jo-news a:focus-visible,
+body.dark .jo-film button:focus-visible,
+body.dark .jo-film a:focus-visible{ outline-color:#f4f4f5; }
+body.dark .jo-film::backdrop{ background:rgba(9,9,10,.86); }
+body.dark .jo-film video{ background:#09090a; box-shadow:0 0 0 1px #26262a, 0 40px 90px -30px rgba(0,0,0,.9); }
+body.dark .jo-film-bar p{ color:#a8a8b0; font-family:Geist,-apple-system,'Segoe UI',sans-serif; }
+@media (hover:hover) and (pointer:fine){
+  body.dark .jo-news .btn-primary:hover, body.dark .jo-film-bar .btn-primary:hover{ background:#d4d4d8; color:#09090a; }
+}
+@media (prefers-reduced-motion:reduce){ body.dark .jo-news-tag::before{ animation:none; } }
