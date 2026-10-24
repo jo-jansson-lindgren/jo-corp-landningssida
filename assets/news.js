@@ -1,7 +1,7 @@
 // Nyhetsruta om lanseringsfilmen + filmspelare (öppnas från rutan eller med #film i adressen)
 (function () {
   var SEEN_KEY = 'jo-news-seen';
-  var NEWS_ID = 'launch-2026-10';
+  var NEWS_ID = 'launch-2026-10-v2'; // ny film 2026-10-24 – visas även för den som stängt den förra
   var VIDEO = 'media/jo-launch-1x1.mp4';
   var POSTER = 'media/jo-launch-1x1-poster.jpg';
 
@@ -26,7 +26,7 @@
       '<video controls playsinline preload="none" poster="' + POSTER + '">' +
       '<source src="' + VIDEO + '" type="video/mp4" />' +
       'Din webbläsare kan inte spela upp filmen.</video>' +
-      '<div class="jo-film-bar"><p>46 sekunder om hur vi håller ditt företags sociala medier igång.</p>' +
+      '<div class="jo-film-bar"><p>37 sekunder om hur vi håller ditt företags sociala medier igång.</p>' +
       '<a class="btn-primary" href="kontakt.html">Kontakta oss ' +
       '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>';
     document.body.appendChild(film);
@@ -65,7 +65,7 @@
       '<div class="jo-news-body">' +
       '<span class="jo-news-tag">Nyhet</span>' +
       '<p class="jo-news-title">Se vår nya film</p>' +
-      '<p class="jo-news-text">46 sekunder om vad vi gör, med vår egen röst.</p>' +
+      '<p class="jo-news-text">37 sekunder om vad vi gör, med vår egen röst.</p>' +
       '<button type="button" class="btn-primary" data-news-open>Se filmen ' + playIcon + '</button>' +
       '</div>' +
       '<button type="button" class="jo-news-close" aria-label="Stäng nyheten">' + closeIcon + '</button>';
