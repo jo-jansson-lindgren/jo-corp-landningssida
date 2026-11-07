@@ -2,14 +2,14 @@
 <!-- The pages search engines should know about. Same addresses as each page's canonical tag.
      Legal pages and 404 are left out on purpose (they are noindex). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://jo-corp-landningssida.pages.dev/</loc></url>
-  <url><loc>https://jo-corp-landningssida.pages.dev/tjanster</loc></url>
-  <url><loc>https://jo-corp-landningssida.pages.dev/paket</loc></url>
-  <url><loc>https://jo-corp-landningssida.pages.dev/plattformar</loc></url>
-  <url><loc>https://jo-corp-landningssida.pages.dev/exempel</loc></url>
-  <url><loc>https://jo-corp-landningssida.pages.dev/case-cafe-solros</loc></url>
-  <url><loc>https://jo-corp-landningssida.pages.dev/case-hansson-vvs</loc></url>
-  <url><loc>https://jo-corp-landningssida.pages.dev/case-boutique-lykke</loc></url>
-  <url><loc>https://jo-corp-landningssida.pages.dev/om-oss</loc></url>
-  <url><loc>https://jo-corp-landningssida.pages.dev/kontakt</loc></url>
+  <url><loc>https://jomarketingsolutions.se/</loc></url>
+  <url><loc>https://jomarketingsolutions.se/tjanster</loc></url>
+  <url><loc>https://jomarketingsolutions.se/paket</loc></url>
+  <url><loc>https://jomarketingsolutions.se/plattformar</loc></url>
+  <url><loc>https://jomarketingsolutions.se/exempel</loc></url>
+  <url><loc>https://jomarketingsolutions.se/case-cafe-solros</loc></url>
+  <url><loc>https://jomarketingsolutions.se/case-hansson-vvs</loc></url>
+  <url><loc>https://jomarketingsolutions.se/case-boutique-lykke</loc></url>
+  <url><loc>https://jomarketingsolutions.se/om-oss</loc></url>
+  <url><loc>https://jomarketingsolutions.se/kontakt</loc></url>
 </urlset>

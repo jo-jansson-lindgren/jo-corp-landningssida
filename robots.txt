@@ -2,4 +2,4 @@
 User-agent: *
 Disallow: /api/
 
-Sitemap: https://jo-corp-landningssida.pages.dev/sitemap.xml
+Sitemap: https://jomarketingsolutions.se/sitemap.xml

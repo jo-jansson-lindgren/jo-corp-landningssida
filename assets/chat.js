@@ -112,7 +112,7 @@
     input.disabled = v;
   }
 
-  var FALLBACK = 'Det gick inte att svara just nu. Mejla oss gärna på jack.walter.jansson@gmail.com så återkommer vi.';
+  var FALLBACK = 'Det gick inte att svara just nu. Mejla oss gärna på jack@jomarketingsolutions.se så återkommer vi.';
 
   function ask(text) {
     text = (text || '').trim().slice(0, MAX_LEN);
@@ -125,7 +125,7 @@
     save();
 
     if (userCount >= MAX_USER_MSGS) {
-      addMsg('bot', 'Nu har vi pratat en stund. För fler frågor, mejla oss på jack.walter.jansson@gmail.com.');
+      addMsg('bot', 'Nu har vi pratat en stund. För fler frågor, mejla oss på jack@jomarketingsolutions.se.');
       return;
     }
 
@@ -147,7 +147,7 @@
           save();
           addMsg('bot', res.data.reply);
         } else if (res.status === 429) {
-          addMsg('bot', 'Många frågor på kort tid. Vänta en stund, eller mejla oss på jack.walter.jansson@gmail.com.');
+          addMsg('bot', 'Många frågor på kort tid. Vänta en stund, eller mejla oss på jack@jomarketingsolutions.se.');
         } else {
           addMsg('bot', FALLBACK);
         }

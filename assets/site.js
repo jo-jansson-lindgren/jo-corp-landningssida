@@ -329,7 +329,7 @@
     um.defer = true;
     um.src = 'https://cloud.umami.is/script.js';
     um.setAttribute('data-website-id', UMAMI_ID);
-    um.setAttribute('data-domains', 'jo-corp-landningssida.pages.dev');
+    um.setAttribute('data-domains', 'jomarketingsolutions.se,www.jomarketingsolutions.se');
     document.head.appendChild(um);
   }
 

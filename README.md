@@ -2,7 +2,7 @@
 
 Landningssida för JO Marketing Solutions — inlägg, grafik och schemaläggning på Instagram och Facebook för lokala företag.
 
-Driftas på Cloudflare Pages (projektet `jo-corp-landningssida`, https://jo-corp-landningssida.pages.dev). Push till `main` bygger och publicerar automatiskt — kontrollera ändå Deployments-vyn efter varje push.
+Driftas på Cloudflare Pages (projektet `jo-corp-landningssida`, https://jomarketingsolutions.se, tidigare https://jo-corp-landningssida.pages.dev). Push till `main` bygger och publicerar automatiskt — kontrollera ändå Deployments-vyn efter varje push.
 
 ## Struktur
 
