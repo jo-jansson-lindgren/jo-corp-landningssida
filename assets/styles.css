@@ -388,6 +388,9 @@ section{ padding:4.25rem 0; position:relative; }
 }
 @media (min-width:640px){ .work-grid{ grid-template-columns:1fr 1fr; } }
 @media (min-width:1000px){ .work-grid{ grid-template-columns:repeat(3,1fr); } }
+/* four cards: two by two until there is room for all four in one row */
+@media (min-width:1000px){ .work-grid.g4{ grid-template-columns:1fr 1fr; } }
+@media (min-width:1180px){ .work-grid.g4{ grid-template-columns:repeat(4,1fr); } }
 .case{
   background:var(--panel);
   border:1px solid var(--line);
@@ -448,7 +451,11 @@ section{ padding:4.25rem 0; position:relative; }
   display:grid; grid-template-columns:repeat(2,1fr); gap:1rem;
 }
 @media (min-width:520px){ .platform-gallery{ grid-template-columns:repeat(3,1fr); } }
+/* four pictures: two by two on small screens, one row of four on wide ones, never 3 + 1 */
+.platform-gallery.g4{ grid-template-columns:repeat(2,1fr); }
+@media (min-width:760px){ .platform-gallery.g4{ grid-template-columns:repeat(4,1fr); } }
 .platform-gallery figure{ margin:0; }
+.post > .platform-gallery-media{ margin-bottom:.95rem; }
 .platform-gallery-media{
   aspect-ratio:1/1; overflow:hidden; border-radius:12px;
   border:1px solid var(--line); background:var(--accent-soft);

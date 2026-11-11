@@ -15,13 +15,13 @@ const hits = new Map();
 
 const KUNSKAP = `
 OM FÖRETAGET
-JO Marketing Solutions är en marknadsföringsbyrå för lokala och växande företag. Det är Jack och Otto, två personer i uppstartsfasen. De skriver inlägg, tar fram grafik och schemalägger publicering på Instagram och Facebook åt lokala företag. Varje månad görs en avstämning; i Standard och Plus ingår en månadsrapport i klarspråk.
+JO Marketing Solutions är en marknadsföringsbyrå för lokala och växande företag. Det är Jack och Otto, två personer i uppstartsfasen. De skriver inlägg, tar fram grafik och schemalägger publicering på Instagram, Facebook och TikTok åt lokala företag. Varje månad görs en avstämning; i Standard och Plus ingår en månadsrapport i klarspråk.
 Kontakt: jack@jomarketingsolutions.se. De svarar oftast inom ett dygn.
 
 TJÄNSTER
 1. Digital strategi: kartläggning av målgrupp, kanaler och mål, samt en innehållsplan per månad (vad som publiceras, var och när) och tonalitet/riktlinjer.
-2. Varumärke & innehåll: visuell linje (färger, typsnitt, mallar i Canva), färdiga inläggstexter för sociala kanaler, nyhetsbrev och kampanjmaterial. Kunden godkänner alltid innan något publiceras.
-3. Analys & uppföljning: räckvidd, engagemang, klick och öppningsgrad på nyhetsbrev. Månadsrapport i klarspråk med rekommendation inför nästa månad.
+2. Varumärke & innehåll: visuell linje (färger, typsnitt, mallar i Canva), färdiga inläggstexter och korta videor för sociala kanaler, plus kampanjmaterial. Kunden godkänner alltid innan något publiceras.
+3. Analys & uppföljning: räckvidd, engagemang, klick och visningar av videor. Månadsrapport i klarspråk med rekommendation inför nästa månad.
 
 SÅ GÅR DET TILL
 1. Samtal: mål, kanaler och vad ni vill uppnå.
@@ -31,8 +31,8 @@ SÅ GÅR DET TILL
 
 PAKET OCH PRISER (ordinarie månadspris, exkl. moms, ingen bindningstid vid månadsvis betalning)
 - Mini, 900 kr/mån: 4 inlägg per månad (Instagram + Facebook), enkel innehållsplan varje månad, grafik och mallar i Canva, schemalagd publicering, kort månadsavstämning.
-- Standard, 1 800 kr/mån (den nivå vi oftast föreslår): 8–10 inlägg per månad, innehållsplan och tonalitet anpassad efter varumärket, egen visuell linje med återanvändbara mallar, uppdaterad Google Business Profile, ett nyhetsbrev per månad, månadsrapport med räckvidd och engagemang.
-- Plus, 2 800 kr/mån: allt i Standard, 12–16 inlägg per månad, ett kampanjupplägg per kvartal, två nyhetsbrev per månad, fördjupad månadsrapport med rekommendationer, avstämning varannan vecka.
+- Standard, 1 800 kr/mån (den nivå vi oftast föreslår): 8–10 inlägg per månad, innehållsplan och tonalitet anpassad efter varumärket, egen visuell linje med återanvändbara mallar, uppdaterad Google Business Profile, ett TikTok-inlägg per månad, månadsrapport med räckvidd och engagemang.
+- Plus, 2 800 kr/mån: allt i Standard, 12–16 inlägg per månad, ett kampanjupplägg per kvartal, två TikTok-inlägg per månad, fördjupad månadsrapport med rekommendationer, avstämning varannan vecka.
 Ingår alltid: kunden godkänner allt innan publicering, gratis testmånad för nya kunder, all grafik och alla mallar får kunden behålla.
 
 BETALPERIOD (lägre pris vid längre period)
@@ -47,8 +47,8 @@ TILLVAL: ANNONSBOOST
 Exakt omfattning stäms av vid det första samtalet.
 
 SKILLNADER MELLAN PAKETEN
-- Mini till Standard: fler inlägg (4 till 8–10), anpassad tonalitet, egen visuell linje med mallar, uppdaterad Google Business Profile, ett nyhetsbrev per månad och månadsrapport med räckvidd och engagemang.
-- Standard till Plus: ännu fler inlägg (8–10 till 12–16), ett kampanjupplägg per kvartal, två nyhetsbrev i stället för ett, fördjupad månadsrapport med rekommendationer och avstämning varannan vecka i stället för varje månad.
+- Mini till Standard: fler inlägg (4 till 8–10), anpassad tonalitet, egen visuell linje med mallar, uppdaterad Google Business Profile, ett TikTok-inlägg per månad och månadsrapport med räckvidd och engagemang.
+- Standard till Plus: ännu fler inlägg (8–10 till 12–16), ett kampanjupplägg per kvartal, två TikTok-inlägg i stället för ett, fördjupad månadsrapport med rekommendationer och avstämning varannan vecka i stället för varje månad.
 
 VANLIGA FRÅGOR
 - Testmånaden: en första månad utan kostnad för nya kunder, så att man kan se hur innehållet och samarbetet känns innan man väljer paket.
@@ -58,10 +58,10 @@ VANLIGA FRÅGOR
 - Extra kostnader: bara om kunden väljer tillvalet Annonsboost (149 kr per inlägg, se ovan).
 
 PLATTFORMAR
-Instagram, Facebook, nyhetsbrev, Google Business Profile, samt Canva för grafik. Inläggen schemaläggs i förväg. Kunden äger sina egna konton och allt material.
+Instagram, Facebook, TikTok, Google Business Profile, samt Canva för grafik. Inläggen schemaläggs i förväg. Kunden äger sina egna konton och allt material.
 
 REFERENSER OCH EXEMPEL
-Företaget är i uppstartsfasen och redovisar inga kundresultat på sidan än. Hur många kunder företaget har är inte angivet. Café Solros, Hansson VVS och Boutique Lykke på sidan är påhittade exempel på hur ett upplägg kan se ut, inga riktiga kunder eller resultat. Den som vill veta mer om hur samarbetet ser ut kan mejla.
+Företaget är i uppstartsfasen och redovisar inga kundresultat på sidan än. Hur många kunder företaget har är inte angivet. Café Solros, Hansson VVS och Boutique Lykke på exempelsidan är påhittade exempel på hur ett upplägg kan se ut, inga riktiga kunder eller resultat. Studio i Kalmar på exempelsidan visar fyra inlägg för en behandlingsstudio som säljer kurser på distans. Den som vill veta mer om hur samarbetet ser ut kan mejla.
 
 OM OSS
 Jack och Otto är i uppstartsfasen. Det betyder lägre priser medan de bygger sin kundbas, och mer uppmärksamhet per kund.
