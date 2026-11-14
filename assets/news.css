@@ -130,3 +130,106 @@ body.dark .jo-film-bar p{ color:#a8a8b0; font-family:Geist,-apple-system,'Segoe 
   body.dark .jo-news .btn-primary:hover, body.dark .jo-film-bar .btn-primary:hover{ background:#d4d4d8; color:#09090a; }
 }
 @media (prefers-reduced-motion:reduce){ body.dark .jo-news-tag::before{ animation:none; } }
+
+/* ---------- Turbinable-lanseringen: stor ruta över hela sidan ----------
+   Slås på med TURBINABLE_LAUNCH i news.js. Förhandsvisning: ?turbinable=1 */
+html:has(.jo-launch[open]){ overflow:hidden; }
+.jo-launch{
+  width:min(54rem, calc(100vw - 2rem)); max-width:none;
+  max-height:calc(100dvh - 2rem);
+  padding:0; border:0; background:transparent; color:#fff;
+  overflow:auto; overscroll-behavior:contain;
+  font:400 1rem/1.55 'Inter','Geist',-apple-system,'Segoe UI',sans-serif;
+}
+.jo-launch::backdrop{ background:rgba(14,13,12,.78); }
+.jo-launch[open]{ animation:joLaunchIn .5s cubic-bezier(.23,1,.32,1); }
+.jo-launch[open]::backdrop{ animation:joLaunchFade .4s ease; }
+@keyframes joLaunchIn{ from{ opacity:0; transform:translateY(24px) scale(.98); } }
+@keyframes joLaunchFade{ from{ opacity:0; } }
+
+.jo-launch-box{
+  position:relative;
+  display:grid; grid-template-columns:minmax(0,1fr) 15.5rem;
+  background:#161514; border-radius:24px; overflow:hidden;
+}
+.jo-launch .jo-launch-box:focus, .jo-launch .jo-launch-box:focus-visible{ outline:none; border-radius:24px; }
+.jo-launch-main{ padding:3rem 3rem 2.6rem; }
+.jo-launch-tag{
+  display:flex; align-items:center; gap:.55rem; margin:0 0 1.4rem;
+  font-size:.9rem; font-weight:500; color:#B8B3A9;
+}
+.jo-launch-tag::before{ content:""; flex:none; width:.5rem; height:.5rem; border-radius:50%; background:#E2573A; animation:joNewsPulse 2s ease-in-out infinite; }
+.jo-launch-title{
+  margin:0 0 1.1rem; color:#fff;
+  font:600 clamp(2.1rem, 4.6vw, 3.3rem)/1.02 'Space Grotesk','Geist',sans-serif; letter-spacing:-.03em;
+}
+.jo-launch-text{ margin:0 0 .7rem; max-width:31rem; color:#E6E2D9; font-size:1.05rem; }
+.jo-launch-text:last-child{ margin-bottom:0; }
+
+.jo-launch-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:.6rem 1.2rem; margin-top:2rem; }
+.jo-launch-go{
+  display:inline-flex; align-items:center; gap:.55rem;
+  background:#fff; color:#161514; text-decoration:none;
+  font-weight:600; font-size:1rem; padding:.95rem 1.6rem; border-radius:99px; min-height:3rem;
+  transition:background .2s ease, color .2s ease, transform .15s cubic-bezier(.23,1,.32,1);
+}
+.jo-launch-go svg{ transition:transform .2s cubic-bezier(.23,1,.32,1); }
+.jo-launch-go:active{ transform:scale(.97); }
+.jo-launch-later{
+  background:none; border:0; padding:.7rem .3rem; min-height:2.75rem; cursor:pointer;
+  color:#B8B3A9; font:500 .95rem/1 inherit; font-family:inherit;
+  text-decoration:underline; text-decoration-color:rgba(184,179,169,.4); text-underline-offset:4px;
+  transition:color .2s ease;
+}
+
+.jo-launch-offer{
+  display:flex; flex-direction:column; justify-content:flex-end; gap:.5rem;
+  padding:2.6rem 1.8rem 2.6rem; background:#E2573A; color:#161514;
+}
+.jo-launch-logo{ margin-bottom:auto; font:700 1.35rem/1 'Montserrat','Space Grotesk','Geist',sans-serif; letter-spacing:-.02em; }
+.jo-launch-pct{ font:700 clamp(3.6rem, 7vw, 5.4rem)/.9 'Space Grotesk','Geist',sans-serif; letter-spacing:-.05em; white-space:nowrap; }
+.jo-launch-offer-text{ font-weight:600; font-size:1.05rem; line-height:1.3; max-width:11rem; }
+
+.jo-launch-close{
+  position:absolute; top:.9rem; right:.9rem; z-index:1;
+  width:2.75rem; height:2.75rem; border:0; border-radius:50%;
+  background:rgba(22,21,20,.14); color:#161514; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .2s ease;
+}
+.jo-launch-close svg{ width:1.05rem; height:1.05rem; }
+.jo-launch a:focus-visible, .jo-launch button:focus-visible{ outline:3px solid #fff; outline-offset:3px; }
+.jo-launch .jo-launch-go:focus-visible{ border-radius:99px; }
+.jo-launch .jo-launch-close:focus-visible{ outline-color:#161514; border-radius:50%; }
+.jo-launch .jo-launch-later:focus-visible{ border-radius:6px; }
+
+@media (hover:hover) and (pointer:fine){
+  .jo-launch-go:hover{ background:#E2573A; color:#161514; }
+  .jo-launch-go:hover svg{ transform:translateX(3px); }
+  .jo-launch-later:hover{ color:#fff; }
+  .jo-launch-close:hover{ background:rgba(22,21,20,.28); }
+}
+
+/* mobil: erbjudandet blir en rad överst, texten under */
+@media (max-width:700px){
+  .jo-launch{ width:calc(100vw - 1.5rem); max-height:calc(100dvh - 1.5rem); }
+  .jo-launch-box, .jo-launch .jo-launch-box:focus, .jo-launch .jo-launch-box:focus-visible{ grid-template-columns:1fr; border-radius:20px; }
+  .jo-launch-offer{ order:-1; flex-direction:row; align-items:center; justify-content:flex-start; gap:1rem; padding:1.3rem 4.2rem 1.3rem 1.4rem; }
+  .jo-launch-logo{ display:none; }
+  .jo-launch-pct{ font-size:3rem; }
+  .jo-launch-offer-text{ font-size:.95rem; max-width:none; }
+  .jo-launch-main{ padding:1.7rem 1.4rem 1.6rem; }
+  .jo-launch-tag{ margin-bottom:1rem; font-size:.85rem; }
+  .jo-launch-title{ font-size:clamp(1.9rem, 8.6vw, 2.4rem); }
+  .jo-launch-text{ font-size:1rem; }
+  .jo-launch-actions{ margin-top:1.5rem; }
+  .jo-launch-go{ flex:1 1 100%; justify-content:center; }
+  .jo-launch-later{ margin:0 auto; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .jo-launch[open], .jo-launch[open]::backdrop{ animation:none; }
+  .jo-launch-tag::before{ animation:none; }
+  .jo-launch-go, .jo-launch-go svg{ transition:background .2s ease, color .2s ease; }
+  .jo-launch-go:active, .jo-launch-go:hover svg{ transform:none; }
+}
