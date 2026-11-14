@@ -134,6 +134,8 @@ body.dark .jo-film-bar p{ color:#a8a8b0; font-family:Geist,-apple-system,'Segoe 
 /* ---------- Turbinable-lanseringen: stor ruta över hela sidan ----------
    Slås på med TURBINABLE_LAUNCH i news.js. Förhandsvisning: ?turbinable=1 */
 html:has(.jo-launch[open]){ overflow:hidden; }
+/* cookie-rutan väntar bakom lanseringsrutan och kommer tillbaka när den stängs */
+html:has(.jo-launch[open]) .cookie-bar{ visibility:hidden; }
 .jo-launch{
   width:min(54rem, calc(100vw - 2rem)); max-width:none;
   max-height:calc(100dvh - 2rem);

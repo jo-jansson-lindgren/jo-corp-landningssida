@@ -146,29 +146,19 @@ var TURBINABLE_LAUNCH = false;
     d.showModal();
   }
 
-  // väntar tills cookie-rutan är besvarad (den tas bort ur sidan när man klickar)
-  function whenCookieBarGone(fn) {
-    if (!document.querySelector('.cookie-bar')) { fn(); return; }
-    var t = setInterval(function () {
-      if (!document.querySelector('.cookie-bar')) { clearInterval(t); fn(); }
-    }, 400);
-  }
-
   function initLaunch() {
     if (launchPreview()) { setTimeout(function () { openLaunch(true); }, 600); return; }
     if (LAUNCH_SKIP.test(location.pathname) || launchSeen()) return;
+    // Visas strax efter att sidan laddats, även på startsidan (väntar inte på turen).
+    // Cookie-rutan är ingen modal: den göms medan lanseringsrutan är öppen (se news.css)
+    // och syns igen när rutan stängs, med sin vanliga logik.
     var go = function () {
-      // cookie-rutan dyker upp en halv sekund efter turen, så vänta lite innan vi tittar
       setTimeout(function () {
-        whenCookieBarGone(function () {
-          setTimeout(function () {
-            if (document.querySelector('dialog[open]')) return; // filmen eller något annat är öppet
-            openLaunch(false);
-          }, 1200);
-        });
-      }, 900);
+        if (document.querySelector('dialog[open]')) return; // filmen eller något annat är öppet
+        openLaunch(false);
+      }, 1500);
     };
-    if (window.joAfterTour) window.joAfterTour(go); else go();
+    if (document.readyState === 'complete') go(); else window.addEventListener('load', go);
   }
 
   function init() {
