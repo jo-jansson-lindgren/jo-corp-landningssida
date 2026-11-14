@@ -2,7 +2,7 @@
 // + stor lanseringsruta för Turbinable.
 
 // PÅ/AV för Turbinable-rutan. false = den gamla filmrutan visas precis som förut.
-// Sätt till true på lanseringsdagen. Förhandsvisa när den är av: lägg till ?turbinable=1 i adressen.
+// Sätt till true på lanseringsdagen. Förhandsvisa när den är av: lägg till ?turbinable=1 i adressen (bara på localhost).
 var TURBINABLE_LAUNCH = false;
 
 (function () {
@@ -90,6 +90,8 @@ var TURBINABLE_LAUNCH = false;
   var LAUNCH_SKIP = /\/(404|integritetspolicy|anvandarvillkor|cookies)(\.html)?\/?$/;
 
   function launchPreview() {
+    // Förhandsvisningen fungerar bara på den egna datorn, så att ingen besökare ser rutan före lanseringen.
+    if (!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return false;
     try { return new URLSearchParams(location.search).get('turbinable') === '1'; } catch (e) { return false; }
   }
   function launchSeen() {
