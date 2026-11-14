@@ -1,4 +1,10 @@
 // Nyhetsruta om lanseringsfilmen + filmspelare (öppnas från rutan eller med #film i adressen)
+// + stor lanseringsruta för Turbinable.
+
+// PÅ/AV för Turbinable-rutan. false = den gamla filmrutan visas precis som förut.
+// Sätt till true på lanseringsdagen. Förhandsvisa när den är av: lägg till ?turbinable=1 i adressen.
+var TURBINABLE_LAUNCH = false;
+
 (function () {
   var SEEN_KEY = 'jo-news-seen';
   var NEWS_ID = 'launch-2026-10-v2'; // ny film 2026-10-24 – visas även för den som stängt den förra
@@ -77,8 +83,87 @@
     });
   }
 
+  // ---------- Turbinable-lanseringen ----------
+  var LAUNCH_KEY = 'jo-turbinable-seen';
+  var LAUNCH_ID = 'turbinable-launch-2026-11';
+  var LAUNCH_URL = 'https://turbinable.com/sv/?utm_source=jo&ref=jo';
+  var LAUNCH_SKIP = /\/(404|integritetspolicy|anvandarvillkor|cookies)(\.html)?\/?$/;
+
+  function launchPreview() {
+    try { return new URLSearchParams(location.search).get('turbinable') === '1'; } catch (e) { return false; }
+  }
+  function launchSeen() {
+    try { return localStorage.getItem(LAUNCH_KEY) === LAUNCH_ID; } catch (e) { return false; }
+  }
+  function launchMarkSeen() {
+    try { localStorage.setItem(LAUNCH_KEY, LAUNCH_ID); } catch (e) {}
+  }
+
+  var arrowIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+  function openLaunch(preview) {
+    if (document.querySelector('.jo-launch')) return;
+    var d = document.createElement('dialog');
+    if (typeof d.showModal !== 'function') return; // mycket gamla webbläsare: ingen ruta alls
+    d.className = 'jo-launch';
+    d.setAttribute('aria-labelledby', 'jo-launch-title');
+    d.setAttribute('aria-describedby', 'jo-launch-text');
+    d.innerHTML =
+      '<div class="jo-launch-box" tabindex="-1" autofocus>' +
+      '<div class="jo-launch-main">' +
+      '<p class="jo-launch-tag">Nyhet från JO Marketing Solutions</p>' +
+      '<h2 class="jo-launch-title" id="jo-launch-title">Vi släpper Turbinable</h2>' +
+      '<div id="jo-launch-text">' +
+      '<p class="jo-launch-text">Turbinable är en AI-agent som skriver, designar och publicerar dina inlägg. Varje vecka.</p>' +
+      '<p class="jo-launch-text">Vi öppnar snart. Skriv upp dig nu. De 200 första får 30 % rabatt de första tre månaderna.</p>' +
+      '</div>' +
+      '<div class="jo-launch-actions">' +
+      '<a class="jo-launch-go" href="' + LAUNCH_URL + '">Skriv upp mig ' + arrowIcon + '</a>' +
+      '<button type="button" class="jo-launch-later">Inte nu</button>' +
+      '</div>' +
+      '</div>' +
+      '<div class="jo-launch-offer" aria-hidden="true">' +
+      '<span class="jo-launch-logo">Turbinable</span>' +
+      '<span class="jo-launch-pct">30&nbsp;%</span>' +
+      '<span class="jo-launch-offer-text">rabatt i tre månader för de 200 första</span>' +
+      '</div>' +
+      '<button type="button" class="jo-launch-close" aria-label="Stäng">' + closeIcon + '</button>' +
+      '</div>';
+    document.body.appendChild(d);
+
+    var opener = document.activeElement;
+    function shut() { d.close(); }
+    d.querySelector('.jo-launch-close').addEventListener('click', shut);
+    d.querySelector('.jo-launch-later').addEventListener('click', shut);
+    // klick på den mörka bakgrunden stänger
+    d.addEventListener('click', function (e) { if (e.target === d) shut(); });
+    d.querySelector('.jo-launch-go').addEventListener('click', function () { if (!preview) launchMarkSeen(); });
+    d.addEventListener('close', function () {
+      if (!preview) launchMarkSeen();
+      d.remove();
+      if (opener && opener.focus && document.contains(opener)) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
+    });
+    d.showModal();
+  }
+
+  function initLaunch() {
+    if (launchPreview()) { setTimeout(function () { openLaunch(true); }, 600); return; }
+    if (LAUNCH_SKIP.test(location.pathname) || launchSeen()) return;
+    // Visas strax efter att sidan laddats, även på startsidan (väntar inte på turen).
+    // Cookie-rutan är ingen modal: den göms medan lanseringsrutan är öppen (se news.css)
+    // och syns igen när rutan stängs, med sin vanliga logik.
+    var go = function () {
+      setTimeout(function () {
+        if (document.querySelector('dialog[open]')) return; // filmen eller något annat är öppet
+        openLaunch(false);
+      }, 1500);
+    };
+    if (document.readyState === 'complete') go(); else window.addEventListener('load', go);
+  }
+
   function init() {
     if (location.hash === '#film') { openFilm(); return; }
+    if (TURBINABLE_LAUNCH || launchPreview()) { initLaunch(); return; }
     if (seen()) return;
     buildNews();
     var show = function () { setTimeout(function () { news.classList.add('show'); }, 1200); };
